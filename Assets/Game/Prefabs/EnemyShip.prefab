@@ -11,8 +11,12 @@ GameObject:
   - component: {fileID: 3470145497817149085}
   - component: {fileID: 5568771391735819375}
   - component: {fileID: 659620479434099170}
-  - component: {fileID: 102605417607457000}
   - component: {fileID: 4560017961611896118}
+  - component: {fileID: 102605417607457000}
+  - component: {fileID: 1086140151738059400}
+  - component: {fileID: 3239218138826697344}
+  - component: {fileID: 1289002472503888216}
+  - component: {fileID: 8140967496814553291}
   m_Layer: 11
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -100,37 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &102605417607457000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09a324f54d94d6e84681731f36566c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 342eb63e507d644daae6ffc27bd8fc71, type: 2}
-  currentHealth: 2
-  firePoint: {fileID: 3195880656587174614}
-  bulletSpeed: 3
-  bulletDamage: 1
-  _motor:
-    _rigidbody: {fileID: 659620479434099170}
-    _speed: 2
-  _renderer: {fileID: 1333951631294404335}
-  _viewTransform: {fileID: 2570692159425164225}
-  _audioSource: {fileID: 4560017961611896118}
-  _viewConfig: {fileID: 11400000, guid: f6ecf0b3d1d004b3893cc42c64995303, type: 2}
-  _fireVFX: {fileID: 1792961037914348205}
-  _fireSFX: {fileID: 0}
-  _damageSFX: {fileID: 0}
-  target: {fileID: 0}
-  destination: {x: 0, y: 0}
-  _fireCooldown: 1.25
-  _stoppingDistance: 0.25
 --- !u!82 &4560017961611896118
 AudioSource:
   m_ObjectHideFlags: 0
@@ -228,6 +201,78 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &102605417607457000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9af7cd70b278d428edc356fc74913f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementComponent: {fileID: 1086140151738059400}
+  _movementConfig: {fileID: 11400000, guid: ce12662c580f35a4fa6692521045866b, type: 2}
+  _destinationComponent: {fileID: 3239218138826697344}
+  _healthComponent: {fileID: 1289002472503888216}
+  _healthConfig: {fileID: 11400000, guid: eb1662badc96a0643901fd23c8b1eebd, type: 2}
+  _fireComponent: {fileID: 8140967496814553291}
+  _firePoint: {fileID: 3195880656587174614}
+  _bulletConfig: {fileID: 11400000, guid: 351344f06766ae34ca36fae70d5025a3, type: 2}
+--- !u!114 &1086140151738059400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f5b2d199147a8418830142b7f4ca12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.MovementComponent
+  _rigidbody: {fileID: 659620479434099170}
+--- !u!114 &3239218138826697344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c980d3197a43b45b7b11fd224388d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.DestinationComponent
+  _transform: {fileID: 3470145497817149085}
+  _stoppingDistance: 0.25
+--- !u!114 &1289002472503888216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cd01bb85a11094eab4e4bc85234d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.HealthComponent
+--- !u!114 &8140967496814553291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6a577ee0613d94fb1355cbb1dc197c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FireComponent
+  _fireCooldown: 1.25
 --- !u!1 &1074127585690423075
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +282,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2570692159425164225}
+  - component: {fileID: 4805719040882424687}
+  - component: {fileID: 7280679100331671728}
+  - component: {fileID: 6320530437619273784}
+  - component: {fileID: 3991496128548421606}
   m_Layer: 11
   m_Name: <Visual>
   m_TagString: Untagged
@@ -260,6 +309,67 @@ Transform:
   - {fileID: 200420269188509056}
   m_Father: {fileID: 3470145497817149085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4805719040882424687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074127585690423075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffabce27683dec428480083a36d4924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.EnemyShipView
+  _ship: {fileID: 102605417607457000}
+  _renderer: {fileID: 1333951631294404335}
+  _material: {fileID: 2100000, guid: 9230c0065227c1b4da624a6d952f0ce2, type: 2}
+  _damageViewComponent: {fileID: 7280679100331671728}
+  _deadViewComponent: {fileID: 6320530437619273784}
+  _movementViewComponent: {fileID: 3991496128548421606}
+  _fireVFX: {fileID: 1792961037914348205}
+--- !u!114 &7280679100331671728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074127585690423075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee7d1a8f1c5c8b459911d992992279d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.DamageViewComponent
+  _renderer: {fileID: 1333951631294404335}
+  _viewConfig: {fileID: 11400000, guid: 927700ae29366c042b95a552a5f0a41f, type: 2}
+--- !u!114 &6320530437619273784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074127585690423075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8095b5ab10551134aad80289fa5d69ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.DeadViewComponent
+  _viewTransform: {fileID: 2570692159425164225}
+  _destroyEffectPrefab: {fileID: 198423008863891152, guid: 91acdbd2820f9ce418996a0a24d91079, type: 3}
+--- !u!114 &3991496128548421606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074127585690423075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48e5a08ea30aba4a8f56604d39edcfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.MovementViewComponent
+  _viewTransform: {fileID: 2570692159425164225}
+  _movementViewConfig: {fileID: 11400000, guid: e6ebf0413d0b48b4fb1824e72ccdb100, type: 2}
 --- !u!1 &2239154907127902911
 GameObject:
   m_ObjectHideFlags: 0
