@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3951101991959698325}
   - component: {fileID: 201757604187811891}
   - component: {fileID: 7507327907909424899}
+  - component: {fileID: 6696821752258511442}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementComponent: {fileID: 7507327907909424899}
+  _teamComponent: {fileID: 0}
 --- !u!114 &7507327907909424899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +127,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.MovementComponent
   _rigidbody: {fileID: 3555983760417175357}
+--- !u!114 &6696821752258511442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743036428890533592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad1a0cd241919c4fb501cc3f627a00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.TeamComponent
+  _team: 0
 --- !u!1 &3276060438849189846
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,3 +219,4 @@ MonoBehaviour:
   _bullet: {fileID: 201757604187811891}
   _vfxContainer: {fileID: 8447445479419591331}
   _viewConfig: {fileID: 11400000, guid: f2107b212e6a245009f8ae9313cc81bb, type: 2}
+  _currentProjectileVfx: {fileID: 0}
