@@ -31,9 +31,6 @@ namespace Game
         [SerializeField]
         private Transform _firePoint;
 
-        [SerializeField]
-        private BulletConfig _bulletConfig;
-
         private PlayerShip _target;
         private BulletManager _bulletManager;
 
