@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementComponent: {fileID: 7507327907909424899}
-  _teamComponent: {fileID: 0}
+  _teamComponent: {fileID: 6696821752258511442}
 --- !u!114 &7507327907909424899
 MonoBehaviour:
   m_ObjectHideFlags: 0
