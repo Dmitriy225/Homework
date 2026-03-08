@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.GameOverPresenter
   _view: {fileID: 1375492023}
-  _playerShip: {fileID: 1650797545}
+  _healthComponent: {fileID: 1650797548}
 --- !u!114 &177601770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.HealthPresenter
   _view: {fileID: 1243470931}
-  _playerShip: {fileID: 1650797545}
+  _healthComponent: {fileID: 1650797548}
 --- !u!114 &177601771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,6 +2555,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab487c3ce89407b8153f9c2ff593bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.PlayerShip
+--- !u!114 &1650797548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8776036950273527089, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
+  m_PrefabInstance: {fileID: 913701707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cd01bb85a11094eab4e4bc85234d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.HealthComponent
 --- !u!1 &1736145931
 GameObject:
   m_ObjectHideFlags: 0
