@@ -61,6 +61,9 @@ namespace Game
             );
 
             _fireComponent.Construct(
+                _bulletManager,
+                _firePoint,
+                TeamType.Enemy,
                 () =>
                     _healthComponent.Exists()
                     && _destinationComponent.IsReached
@@ -72,38 +75,23 @@ namespace Game
         private void OnEnable()
         {
             _healthComponent.OnEmptied += Disable;
-            _fireComponent.OnFire += SpawnBullet;
         }
 
         private void OnDisable()
         {
             _healthComponent.OnEmptied -= Disable;
-            _fireComponent.OnFire -= SpawnBullet;
         }
 
         private void Update()
         {
-            _fireComponent.TryFire();
+            _fireComponent.TryFire(
+                (_firePoint.position - _target.transform.position).normalized
+            );
         }
 
         private void Disable()
         {
             gameObject.SetActive(false);
-        }
-
-        private void SpawnBullet()
-        {
-            Vector2 position = _firePoint.position;
-            Vector2 target = _target.transform.position;
-            Vector2 direction = (target - position).normalized;
-
-            _bulletManager.Spawn(
-                position,
-                direction,
-                _bulletConfig.Speed,
-                _bulletConfig.Damage,
-                TeamType.Enemy
-            );
         }
     }
 }

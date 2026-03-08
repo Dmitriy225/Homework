@@ -27,10 +27,7 @@ namespace Game
 
         [SerializeField]
         private Transform _firePoint;
-
-        [SerializeField]
-        private BulletConfig _bulletConfig;
-
+        
         [Header("Bullets")]
         [SerializeField]
         private BulletManager _bulletManager;
@@ -47,6 +44,9 @@ namespace Game
             );
 
             _fireComponent.Construct(
+                _bulletManager,
+                _firePoint,
+                TeamType.Player,
                 () => _healthComponent.Exists()
             );
         }
@@ -54,34 +54,21 @@ namespace Game
         private void OnEnable()
         {
             _healthComponent.OnEmptied += Disable;
-            _fireComponent.OnFire += SpawnBullet;
         }
 
         private void OnDisable()
         {
             _healthComponent.OnEmptied -= Disable;
-            _fireComponent.OnFire -= SpawnBullet;
         }
 
         public void Fire()
         {
-            _fireComponent.TryFire();
+            _fireComponent.TryFire(Vector2.up);
         }
 
         private void Disable()
         {
             gameObject.SetActive(false);
-        }
-
-        private void SpawnBullet()
-        {
-            _bulletManager.Spawn(
-                _firePoint.position,
-                _firePoint.up,
-                _bulletConfig.Speed,
-                _bulletConfig.Damage,
-                TeamType.Player
-            );
         }
     }
 }

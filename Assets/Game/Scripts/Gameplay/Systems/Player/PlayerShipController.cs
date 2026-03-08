@@ -13,14 +13,13 @@ namespace Game
         private void Awake()
         {
             _movementComponent = _ship.GetComponent<MovementComponent>();
-            _fireComponent = _ship.GetComponent<FireComponent>();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _fireComponent.TryFire();
+                _ship.Fire();
             }
 
             float dx = Input.GetAxisRaw("Horizontal");
