@@ -32,7 +32,7 @@ namespace Game
                 return;
             }
 
-            item.gameObject.SetActive(false);
+            OnReturn(item);
             _pool.Push(item);
         }
 
@@ -55,6 +55,11 @@ namespace Game
         protected virtual void OnRent(T item)
         {
             item.gameObject.SetActive(true);
+        }
+
+        protected virtual void OnReturn(T item)
+        {
+            item.gameObject.SetActive(false);
         }
 
         private T CreateItem()
