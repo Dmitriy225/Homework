@@ -55,14 +55,14 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<IAttackable>(out var attackable))
+            if (other.TryGetComponent<HealthComponent>(out var attackable))
             {
-                if (other.TryGetComponent<ITeamer>(out var teamer))
+                if (other.TryGetComponent<TeamComponent>(out var teamer))
                 {
                     if (_teamComponent.Team != teamer.Team)
                     {
                         OnHit?.Invoke();
-                        attackable.TakeDamage(_damage);
+                        attackable.Reduce(_damage);
                         OnDied?.Invoke(this);
                     }
                 }
