@@ -10,6 +10,7 @@ namespace Game
 
         private MovementComponent _movementComponent;
         private HealthComponent _healthComponent;
+        private FireComponent _fireComponent;
 
         [SerializeField]
         private Renderer _renderer;
@@ -33,6 +34,7 @@ namespace Game
         {
             _movementComponent = _ship.GetComponent<MovementComponent>();
             _healthComponent = _ship.GetComponent<HealthComponent>();
+            _fireComponent = _ship.GetComponent<FireComponent>();
             _renderer.material = _material;
         }
 
@@ -41,7 +43,7 @@ namespace Game
             _movementComponent.OnMoved += OnShipMoved;
             _healthComponent.OnReduced += _damageViewComponent.AnimateDamage;
             _healthComponent.OnEmptied += _deadViewComponent.InstantiateEffect;
-            _ship.OnFire += _fireVFX.Play;
+            _fireComponent.OnFire += _fireVFX.Play;
         }
 
         private void OnDisable()
@@ -49,7 +51,7 @@ namespace Game
             _movementComponent.OnMoved -= OnShipMoved;
             _healthComponent.OnReduced -= _damageViewComponent.AnimateDamage;
             _healthComponent.OnEmptied -= _deadViewComponent.InstantiateEffect;
-            _ship.OnFire -= _fireVFX.Play;
+            _fireComponent.OnFire -= _fireVFX.Play;
         }
 
         private void LateUpdate()

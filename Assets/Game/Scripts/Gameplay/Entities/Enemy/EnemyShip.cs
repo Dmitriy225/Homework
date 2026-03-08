@@ -4,25 +4,8 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class EnemyShip : MonoBehaviour, ITeamer
+    public sealed class EnemyShip : MonoBehaviour
     {
-        public event Action OnFire
-        {
-            add { _fireComponent.OnFire += value; }
-            remove { _fireComponent.OnFire -= value; }
-        }
-
-        public PlayerShip Target
-        {
-            get => _target;
-            set => _target = value;
-        }
-
-        public TeamType Team
-        {
-            get => TeamType.Enemy;
-        }
-
         [Header("Movement")]
         [SerializeField]
         private MovementComponent _movementComponent;
@@ -54,7 +37,10 @@ namespace Game
         private PlayerShip _target;
         private BulletManager _bulletManager;
 
-        public void Construct(BulletManager bulletManager, PlayerShip target, Vector2 destination)
+        public void Construct(
+            BulletManager bulletManager,
+            PlayerShip target,
+            Vector2 destination)
         {
             _bulletManager = bulletManager;
             _target = target;
