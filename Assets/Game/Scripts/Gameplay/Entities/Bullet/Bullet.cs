@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {      
-    public sealed class Bullet : MonoBehaviour, IMoveable
+    public sealed class Bullet : MonoBehaviour
     {
         public struct Args
         {
@@ -13,20 +13,8 @@ namespace Game
             public TeamType team;
         }
 
-        public event Action<Vector2> OnMoved
-        {
-            add { _movementComponent.OnMoved += value; }
-            remove { _movementComponent.OnMoved -= value; }
-        }
-
         public event Action<Bullet> OnDied;
         public event Action OnHit;
-
-        public Vector2 MoveDirection
-        {
-            get => _movementComponent.Direction;
-            set => _movementComponent.Direction = value;
-        }
 
         [SerializeField]
         private MovementComponent _movementComponent;
