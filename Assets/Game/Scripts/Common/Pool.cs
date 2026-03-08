@@ -49,7 +49,7 @@ namespace Game
 
         protected virtual void OnCreate(T item)
         {
-            item.gameObject.SetActive(true);
+            item.gameObject.SetActive(false);
         }
 
         protected virtual void OnRent(T item)
