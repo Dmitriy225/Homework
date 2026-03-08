@@ -51,7 +51,7 @@ namespace Game
             enemy.Construct(
                 _bulletManager,
                 _target,
-                _spawnPositionShuffler.NextPosition()
+                _attackPositionShuffler.NextPosition()
             );
 
             enemy.transform.position = _spawnPositionShuffler.NextPosition();
