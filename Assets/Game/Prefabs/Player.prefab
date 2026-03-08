@@ -219,7 +219,6 @@ MonoBehaviour:
   _healthConfig: {fileID: 11400000, guid: f8558962b6acf4e438931dbc7b426bd2, type: 2}
   _fireComponent: {fileID: 6107375178033848401}
   _firePoint: {fileID: 8503432944885784460}
-  _bulletConfig: {fileID: 11400000, guid: 1eb69a1408e689947a26855488453aca, type: 2}
   _bulletManager: {fileID: 0}
 --- !u!114 &1890657567784614641
 MonoBehaviour:
@@ -259,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.FireComponent
   _fireCooldown: 0.25
+  _bulletConfig: {fileID: 11400000, guid: 1eb69a1408e689947a26855488453aca, type: 2}
 --- !u!114 &5117175013659220421
 MonoBehaviour:
   m_ObjectHideFlags: 0
