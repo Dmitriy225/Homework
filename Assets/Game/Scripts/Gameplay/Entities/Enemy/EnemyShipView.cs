@@ -8,6 +8,8 @@ namespace Game
         [SerializeField]
         private EnemyShip _ship;
 
+        private MovementComponent _movementComponent;
+
         [SerializeField]
         private Renderer _renderer;
 
@@ -28,12 +30,13 @@ namespace Game
 
         private void Awake()
         {
+            _movementComponent = _ship.GetComponent<MovementComponent>();
             _renderer.material = _material;
         }
 
         private void OnEnable()
         {
-            _ship.OnMoved += OnShipMoved;
+            _movementComponent.OnMoved += OnShipMoved;
             _ship.OnHealthReduced += _damageViewComponent.AnimateDamage;
             _ship.OnDied += _deadViewComponent.InstantiateEffect;
             _ship.OnFire += _fireVFX.Play;
@@ -41,7 +44,7 @@ namespace Game
 
         private void OnDisable()
         {
-            _ship.OnMoved -= OnShipMoved;
+            _movementComponent.OnMoved -= OnShipMoved;
             _ship.OnHealthReduced -= _damageViewComponent.AnimateDamage;
             _ship.OnDied -= _deadViewComponent.InstantiateEffect;
             _ship.OnFire -= _fireVFX.Play;
