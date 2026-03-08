@@ -103,10 +103,6 @@ namespace Game
                     && !_destinationComponent.IsReached
             );
 
-            _destinationComponent.Construct(
-                this
-            );
-
             _fireComponent.Construct(
                 () =>
                     _healthComponent.Exists()

@@ -16,26 +16,23 @@ namespace Game
         }
 
         [SerializeField]
+        private MovementComponent _movementComponent;
+
+        [SerializeField]
         private Transform _transform;
 
         [SerializeField]
         private float _stoppingDistance = 0.25f;
 
-        private IMoveable _moveable;
         private Vector2 _destination;
         private bool _isReached;
-
-        public void Construct(IMoveable moveable)
-        {
-            _moveable = moveable;
-        }
 
         public void FixedUpdate()
         {
             Vector2 distance = _destination - (Vector2)_transform.position;
             _isReached = distance.sqrMagnitude <= _stoppingDistance * _stoppingDistance;
 
-            _moveable.MoveDirection = _isReached ? Vector3.zero : distance.normalized;
+            _movementComponent.Direction = _isReached ? Vector3.zero : distance.normalized;
         }
     }
 }
