@@ -35,11 +35,9 @@ namespace Game
 
         public void Construct(
             BulletManager bulletManager,
-            PlayerShip target,
-            Vector2 destination)
+            PlayerShip target)
         {
             _target = target;
-            _destinationComponent.Destination = destination;
 
             _healthComponent.Construct(
                 _healthConfig.Health
@@ -62,6 +60,11 @@ namespace Game
                     && _target != null
                     && _target.GetComponent<HealthComponent>().Exists()
             );
+        }
+
+        public void SetDestination(Vector2 destination)
+        {
+            _destinationComponent.Destination = destination;
         }
 
         private void OnEnable()

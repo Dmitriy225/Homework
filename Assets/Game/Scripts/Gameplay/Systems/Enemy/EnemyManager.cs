@@ -47,14 +47,10 @@ namespace Game
             }
 
             var enemy = _pool.Rent();
-
-            enemy.Construct(
-                _bulletManager,
-                _target,
-                _attackPositionShuffler.NextPosition()
-            );
-
+            enemy.Construct(_bulletManager, _target);
+            enemy.SetDestination(_attackPositionShuffler.NextPosition());
             enemy.transform.position = _spawnPositionShuffler.NextPosition();
+
             _spawnCooldown.Restart();
         }
 

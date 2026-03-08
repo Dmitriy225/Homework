@@ -46,10 +46,15 @@ namespace Game
             else
             {
                 item = Instantiate(_prefab, _container);
-                item.gameObject.SetActive(true);
+                OnCreate(item);
             }
 
             return item;
+        }
+
+        protected virtual void OnCreate(T item)
+        {
+            item.gameObject.SetActive(true);
         }
     }
 }
