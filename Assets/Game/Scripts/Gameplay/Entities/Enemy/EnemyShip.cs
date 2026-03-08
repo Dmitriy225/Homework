@@ -77,7 +77,7 @@ namespace Game
         private void Update()
         {
             _fireComponent.TryFire(
-                (_firePoint.position - _target.transform.position).normalized
+                (_target.transform.position - _firePoint.position).normalized
             );
         }
 
