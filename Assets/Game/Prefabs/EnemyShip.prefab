@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.FireComponent
   _fireCooldown: 1.25
+  _bulletConfig: {fileID: 11400000, guid: 351344f06766ae34ca36fae70d5025a3, type: 2}
 --- !u!114 &7993781408452810414
 MonoBehaviour:
   m_ObjectHideFlags: 0
