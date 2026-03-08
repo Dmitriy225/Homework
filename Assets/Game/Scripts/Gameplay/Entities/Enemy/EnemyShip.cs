@@ -32,20 +32,15 @@ namespace Game
         private Transform _firePoint;
 
         private PlayerShip _target;
-        private BulletManager _bulletManager;
 
         public void Construct(
             BulletManager bulletManager,
             PlayerShip target,
             Vector2 destination)
         {
-            _bulletManager = bulletManager;
             _target = target;
             _destinationComponent.Destination = destination;
-        }
 
-        private void Awake()
-        {
             _healthComponent.Construct(
                 _healthConfig.Health
             );
@@ -58,7 +53,7 @@ namespace Game
             );
 
             _fireComponent.Construct(
-                _bulletManager,
+                bulletManager,
                 _firePoint,
                 TeamType.Enemy,
                 () =>
