@@ -8,7 +8,6 @@ namespace Game
         [SerializeField]
         private Bullet _bullet;
 
-        [SerializeField]
         private TeamComponent _teamComponent;
 
         [SerializeField]
@@ -19,6 +18,11 @@ namespace Game
 
         [SerializeField]
         private ParticleSystem _currentProjectileVfx;
+
+        private void Awake()
+        {
+            _teamComponent = _bullet.GetComponent<TeamComponent>();    
+        }
 
         private void OnEnable()
         {
