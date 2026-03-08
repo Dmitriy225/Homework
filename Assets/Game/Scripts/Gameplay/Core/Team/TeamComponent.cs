@@ -7,6 +7,11 @@ namespace Game
     {
         public event Action<TeamType> OnTeamChanged;
 
+        public TeamType Team
+        {
+            get => _team;
+        }
+
         [SerializeField]
         private TeamType _team;
 

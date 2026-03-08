@@ -22,7 +22,6 @@ namespace Game
 
         public event Action<Bullet> OnDied;
         public event Action OnHit;
-        public event Action<TeamType> OnTeamChanged;
 
         public Vector2 MoveDirection
         {
@@ -30,16 +29,13 @@ namespace Game
             set => _movementComponent.Direction = value;
         }
 
-        public TeamType Team
-        {
-            get => _team;
-        }
-
         [SerializeField]
         private MovementComponent _movementComponent;
 
+        [SerializeField]
+        private TeamComponent _teamComponent;
+
         private int _damage;
-        private TeamType _team;
 
         private void Awake()
         {
@@ -54,18 +50,7 @@ namespace Game
             _movementComponent.Speed = args.speed;
             _movementComponent.Direction = args.direction;
             _damage = args.damage;
-            SetTeam(args.team);
-        }
-
-        public void SetTeam(TeamType team)
-        {
-            if (_team == team)
-            {
-                return;
-            }
-
-            _team = team;
-            OnTeamChanged?.Invoke(team);
+            _teamComponent.SetTeam(args.team);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -74,7 +59,7 @@ namespace Game
             {
                 if (other.TryGetComponent<ITeamer>(out var teamer))
                 {
-                    if (_team != teamer.Team)
+                    if (_teamComponent.Team != teamer.Team)
                     {
                         OnHit?.Invoke();
                         attackable.TakeDamage(_damage);

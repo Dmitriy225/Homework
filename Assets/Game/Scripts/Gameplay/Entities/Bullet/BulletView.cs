@@ -9,6 +9,9 @@ namespace Game
         private Bullet _bullet;
 
         [SerializeField]
+        private TeamComponent _teamComponent;
+
+        [SerializeField]
         private Transform _vfxContainer;
 
         [SerializeField]
@@ -19,15 +22,15 @@ namespace Game
 
         private void OnEnable()
         {
-            OnTeamChanged(_bullet.Team);
+            OnTeamChanged(_teamComponent.Team);
             _bullet.OnHit += OnHit;
-            _bullet.OnTeamChanged += OnTeamChanged;
+            _teamComponent.OnTeamChanged += OnTeamChanged;
         }
 
         private void OnDisable()
         {
             _bullet.OnHit -= OnHit;
-            _bullet.OnTeamChanged -= OnTeamChanged;
+            _teamComponent.OnTeamChanged -= OnTeamChanged;
         }
 
         private void OnHit()
