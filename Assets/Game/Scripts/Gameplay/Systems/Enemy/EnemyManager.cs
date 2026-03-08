@@ -1,7 +1,5 @@
 using System;
-using Modules.Utils;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -15,37 +13,30 @@ namespace Game
             get => _destroyedEnemies;
         }
 
-        [Header("Spawn")]
         [SerializeField]
         private SpawnCooldown _spawnCooldown;
 
-        [Header("Pool")]
         [SerializeField]
         private Pool<EnemyShip> _pool;
-        
-        [Header("Points")]
-        [SerializeField]
-        private Transform[] _spawnPositions;
-        
-        [SerializeField]
-        private Transform[] _attackPositions;
 
-        [Header("Bullets")]
         [SerializeField]
         private BulletManager _bulletManager;
 
-        [Header("Target")]
         [SerializeField]
         private PlayerShip _target;
 
-        private int _spawnIndex;
-        private int _attackIndex;
-        private int _destroyedEnemies;      
-        
+        [SerializeField]
+        private PositionShuffler _spawnPositionShuffler;
+
+        [SerializeField]
+        private PositionShuffler _attackPositionShuffler;
+
+        private int _destroyedEnemies;
+
         private void Awake()
         {
-            _spawnPositions.Shuffle();
-            _attackPositions.Shuffle();
+            _spawnPositionShuffler.Shuffle();
+            _attackPositionShuffler.Shuffle();
         }
 
         private void FixedUpdate()
@@ -60,10 +51,10 @@ namespace Game
             enemy.Construct(
                 _bulletManager,
                 _target,
-                NextDestination()
+                _spawnPositionShuffler.NextPosition()
             );
 
-            enemy.transform.position = NextSpawnPosition();
+            enemy.transform.position = _spawnPositionShuffler.NextPosition();
             _spawnCooldown.Restart();
         }
 
@@ -72,28 +63,6 @@ namespace Game
             _destroyedEnemies++;
             OnEnemyDestroyed?.Invoke(_destroyedEnemies);
             _pool.Return(enemy);
-        }
-        
-        private Vector3 NextSpawnPosition()
-        {
-            if (_spawnIndex >= _spawnPositions.Length)
-            {
-                _spawnPositions.Shuffle();
-                _spawnIndex = 0;
-            }
-
-            return _spawnPositions[_spawnIndex++].position;
-        }
-
-        private Vector3 NextDestination()
-        {
-            if (_attackIndex >= _attackPositions.Length)
-            {
-                _attackPositions.Shuffle();
-                _attackIndex = 0;
-            }
-
-            return _attackPositions[_attackIndex++].position;
         }
     }
 }
