@@ -51,7 +51,7 @@ namespace Game
             var bullet = _pool.Rent();
 
             bullet.SetArgs(
-                new Bullet.BulletArgs
+                new Bullet.Args
                 {
                     speed = speed,
                     direction = direction,

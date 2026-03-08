@@ -1,12 +1,11 @@
-﻿using Codice.CM.Common;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Game
 {      
     public sealed class Bullet : MonoBehaviour, IMoveable
     {
-        public struct BulletArgs
+        public struct Args
         {
             public float speed;
             public Vector2 direction;
@@ -45,7 +44,7 @@ namespace Game
             );
         }
 
-        public void SetArgs(BulletArgs args)
+        public void SetArgs(Args args)
         {
             _movementComponent.Speed = args.speed;
             _movementComponent.Direction = args.direction;
