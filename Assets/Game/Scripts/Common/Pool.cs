@@ -20,8 +20,7 @@ namespace Game
         {
             for (var i = 0; i < _initialCount; i++)
             {
-                T item = Instantiate(_prefab, _container);
-                item.gameObject.SetActive(false);
+                T item = CreateItem();
                 _pool.Push(item);
             }
         }
@@ -39,22 +38,30 @@ namespace Game
 
         public T Rent()
         {
-            if (_pool.TryPop(out T item))
+            if (!_pool.TryPop(out T item))
             {
-                item.gameObject.SetActive(true);
-            }
-            else
-            {
-                item = Instantiate(_prefab, _container);
-                OnCreate(item);
+                item = CreateItem();
             }
 
+            OnRent(item);
             return item;
         }
 
         protected virtual void OnCreate(T item)
         {
             item.gameObject.SetActive(true);
+        }
+
+        protected virtual void OnRent(T item)
+        {
+            item.gameObject.SetActive(true);
+        }
+
+        private T CreateItem()
+        {
+            T item = Instantiate(_prefab, _container);
+            OnCreate(item);
+            return item;
         }
     }
 }
