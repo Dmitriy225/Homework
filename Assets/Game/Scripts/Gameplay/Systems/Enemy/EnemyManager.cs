@@ -17,7 +17,7 @@ namespace Game
         private SpawnCooldown _spawnCooldown;
 
         [SerializeField]
-        private Pool<EnemyShip> _pool;
+        private EnemyPool _pool;
 
         [SerializeField]
         private BulletManager _bulletManager;
@@ -47,7 +47,6 @@ namespace Game
             }
 
             var enemy = _pool.Rent();
-            enemy.Construct(_bulletManager, _target);
             enemy.SetDestination(_attackPositionShuffler.NextPosition());
             enemy.transform.position = _spawnPositionShuffler.NextPosition();
 
