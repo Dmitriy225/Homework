@@ -4,20 +4,8 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class EnemyShip : MonoBehaviour, IAttackable, ITeamer
+    public sealed class EnemyShip : MonoBehaviour, ITeamer
     {
-        public event Action OnDied
-        {
-            add { _healthComponent.OnEmptied += value; }
-            remove { _healthComponent.OnEmptied -= value; }
-        }
-
-        public event Action OnHealthReduced
-        {
-            add { _healthComponent.OnReduced += value; }
-            remove { _healthComponent.OnReduced -= value; }
-        }
-
         public event Action OnFire
         {
             add { _fireComponent.OnFire += value; }
@@ -28,11 +16,6 @@ namespace Game
         {
             get => _target;
             set => _target = value;
-        }
-
-        public bool IsAlive
-        {
-            get => _healthComponent.Exists();
         }
 
         public TeamType Team
@@ -115,11 +98,6 @@ namespace Game
         private void Update()
         {
             _fireComponent.TryFire();
-        }
-
-        public void TakeDamage(int damage)
-        {
-            _healthComponent.Reduce(damage);
         }
 
         private void Disable()
