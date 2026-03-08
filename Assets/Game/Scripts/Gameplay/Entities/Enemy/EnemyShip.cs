@@ -65,7 +65,7 @@ namespace Game
                     _healthComponent.Exists()
                     && _destinationComponent.IsReached
                     && _target != null
-                    && _target.IsAlive
+                    && _target.GetComponent<HealthComponent>().Exists()
             );
         }
 

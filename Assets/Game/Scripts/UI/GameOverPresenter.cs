@@ -7,19 +7,19 @@ namespace Game
     public sealed class GameOverPresenter : MonoBehaviour
     {
         [SerializeField]
-        GameOverView _view;
+        private GameOverView _view;
 
         [SerializeField]
-        PlayerShip _playerShip;
+        private HealthComponent _healthComponent;
 
         private void OnEnable()
         {
-            _playerShip.OnDied += _view.Show;
+            _healthComponent.OnEmptied += _view.Show;
         }
 
         private void OnDisable()
         {
-            _playerShip.OnDied -= _view.Show;
+            _healthComponent.OnEmptied -= _view.Show;
         }
     }
 }

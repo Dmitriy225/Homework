@@ -7,16 +7,25 @@ namespace Game
         [SerializeField]
         private PlayerShip _ship;
 
+        private MovementComponent _movementComponent;
+        private FireComponent _fireComponent;
+
+        private void Awake()
+        {
+            _movementComponent = _ship.GetComponent<MovementComponent>();
+            _fireComponent = _ship.GetComponent<FireComponent>();
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _ship.Fire();
+                _fireComponent.TryFire();
             }
 
             float dx = Input.GetAxisRaw("Horizontal");
             float dy = Input.GetAxisRaw("Vertical");
-            _ship.MoveDirection = new Vector2(dx, dy);
+            _movementComponent.Direction = new Vector2(dx, dy);
         }
     }
 }

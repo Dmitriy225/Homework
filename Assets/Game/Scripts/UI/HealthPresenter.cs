@@ -1,6 +1,4 @@
 ﻿using Modules.UI;
-using Modules.Utils;
-using System;
 using UnityEngine;
 
 namespace Game
@@ -11,16 +9,16 @@ namespace Game
         private HealthView _view;
 
         [SerializeField]
-        private PlayerShip _playerShip;
+        private HealthComponent _healthComponent;
 
         private void OnEnable()
         {
-            _playerShip.OnHealthChanged += OnHealthChanged;
+            _healthComponent.OnStateChanged += OnHealthChanged;
         }
 
         private void OnDisable()
         {
-            _playerShip.OnHealthChanged -= OnHealthChanged;
+            _healthComponent.OnStateChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(int current, int max)

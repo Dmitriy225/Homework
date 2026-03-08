@@ -5,54 +5,8 @@ using UnityEngine;
 namespace Game
 {
     // +
-    public sealed class PlayerShip : MonoBehaviour, IMoveable, IAttackable, ITeamer, IAttacker
+    public sealed class PlayerShip : MonoBehaviour
     {
-        public event Action<Vector2> OnMoved
-        {
-            add { _movementComponent.OnMoved += value; }
-            remove { _movementComponent.OnMoved -= value; }
-        }
-
-        public event Action<int, int> OnHealthChanged
-        {
-            add { _healthComponent.OnStateChanged += value; }
-            remove { _healthComponent.OnStateChanged -= value; }
-        }
-
-        public event Action OnHealthReduced
-        {
-            add { _healthComponent.OnReduced += value; }
-            remove { _healthComponent.OnReduced -= value; }
-        }
-
-        public event Action OnFire
-        {
-            add { _fireComponent.OnFire += value; }
-            remove { _fireComponent.OnFire -= value; }
-        }
-
-        public event Action OnDied
-        {
-            add { _healthComponent.OnEmptied += value; }
-            remove { _healthComponent.OnEmptied -= value; }
-        }
-
-        public Vector2 MoveDirection
-        {
-            get => _movementComponent.Direction;
-            set => _movementComponent.Direction = value;
-        }
-
-        public bool IsAlive
-        {
-            get => _healthComponent.Exists();
-        }
-
-        public TeamType Team
-        {
-            get => TeamType.Player;
-        }
-
         [Header("Movement")]
         [SerializeField]
         private MovementComponent _movementComponent;
@@ -112,11 +66,6 @@ namespace Game
         public void Fire()
         {
             _fireComponent.TryFire();
-        }
-
-        public void TakeDamage(int damage)
-        {
-            _healthComponent.Reduce(damage);
         }
 
         private void Disable()

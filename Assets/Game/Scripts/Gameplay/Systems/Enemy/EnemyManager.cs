@@ -58,7 +58,7 @@ namespace Game
         {
             _cooldown.Tick(Time.fixedDeltaTime);
 
-            if (!_cooldown.IsCompleted() || !_target.IsAlive)
+            if (!_cooldown.IsCompleted() || !_target.GetComponent<HealthComponent>().Exists()) // TODO: Убрать GetComponent
             {
                 return;
             }

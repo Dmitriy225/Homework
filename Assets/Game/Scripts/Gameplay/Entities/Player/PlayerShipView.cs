@@ -9,6 +9,10 @@ namespace Game
         [SerializeField]
         private PlayerShip _ship;
 
+        private MovementComponent _movementComponent;
+        private HealthComponent _healthComponent;
+        private FireComponent _fireComponent;
+
         [SerializeField]
         private Renderer _renderer;
 
@@ -41,27 +45,30 @@ namespace Game
 
         private void Awake()
         {
+            _movementComponent = _ship.GetComponent<MovementComponent>();
+            _healthComponent = _ship.GetComponent<HealthComponent>();
+            _fireComponent = _ship.GetComponent<FireComponent>();
             _renderer.material = _material;
         }
 
         private void OnEnable()
         {
-            _ship.OnMoved += OnShipMoved;
-            _ship.OnHealthReduced += OnHealthReduced;
-            _ship.OnHealthReduced += _damageViewComponent.AnimateDamage;
-            _ship.OnHealthReduced += _cameraShaker.Shake;
-            _ship.OnDied += _deadViewComponent.InstantiateEffect;
-            _ship.OnFire += OnFire;
+            _movementComponent.OnMoved += OnShipMoved;
+            _healthComponent.OnReduced += OnHealthReduced;
+            _healthComponent.OnReduced += _damageViewComponent.AnimateDamage;
+            _healthComponent.OnReduced += _cameraShaker.Shake;
+            _healthComponent.OnEmptied += _deadViewComponent.InstantiateEffect;
+            _fireComponent.OnFire += OnFire;
         }
 
         private void OnDisable()
         {
-            _ship.OnMoved -= OnShipMoved;
-            _ship.OnHealthReduced -= OnHealthReduced;
-            _ship.OnHealthReduced -= _damageViewComponent.AnimateDamage;
-            _ship.OnHealthReduced -= _cameraShaker.Shake;
-            _ship.OnDied -= _deadViewComponent.InstantiateEffect;
-            _ship.OnFire -= OnFire;
+            _movementComponent.OnMoved -= OnShipMoved;
+            _healthComponent.OnReduced -= OnHealthReduced;
+            _healthComponent.OnReduced -= _damageViewComponent.AnimateDamage;
+            _healthComponent.OnReduced -= _cameraShaker.Shake;
+            _healthComponent.OnEmptied -= _deadViewComponent.InstantiateEffect;
+            _fireComponent.OnFire -= OnFire;
         }
 
         private void LateUpdate()
