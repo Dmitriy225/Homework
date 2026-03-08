@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Modules.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,10 +17,7 @@ namespace Game
 
         [Header("Spawn")]
         [SerializeField]
-        private float _minSpawnCooldown = 2;
-
-        [SerializeField]
-        private float _maxSpawnCooldown = 3;
+        private SpawnCooldown _spawnCooldown;
 
         [Header("Pool")]
         [SerializeField]
@@ -44,21 +40,17 @@ namespace Game
 
         private int _spawnIndex;
         private int _attackIndex;
-        private int _destroyedEnemies;
-        private Cooldown _cooldown;
+        private int _destroyedEnemies;      
         
         private void Awake()
         {
             _spawnPositions.Shuffle();
             _attackPositions.Shuffle();
-            _cooldown = new Cooldown(NextSpawnDuration());
         }
 
         private void FixedUpdate()
         {
-            _cooldown.Tick(Time.fixedDeltaTime);
-
-            if (!_cooldown.IsCompleted() || !_target.GetComponent<HealthComponent>().Exists()) // TODO: Убрать GetComponent
+            if (!_spawnCooldown.IsCompleted() || !_target.GetComponent<HealthComponent>().Exists()) // TODO: Убрать GetComponent
             {
                 return;
             }
@@ -72,8 +64,7 @@ namespace Game
             );
 
             enemy.transform.position = NextSpawnPosition();
-            _cooldown.SetDuration(NextSpawnDuration());
-            _cooldown.Reset();
+            _spawnCooldown.Restart();
         }
 
         public void Despawn(EnemyShip enemy)
@@ -81,11 +72,6 @@ namespace Game
             _destroyedEnemies++;
             OnEnemyDestroyed?.Invoke(_destroyedEnemies);
             _pool.Return(enemy);
-        }
-
-        private float NextSpawnDuration()
-        {
-            return Random.Range(_minSpawnCooldown, _maxSpawnCooldown);
         }
         
         private Vector3 NextSpawnPosition()
