@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class TransformBoundController : MonoBehaviour
+    public sealed class PlayerBoundController : MonoBehaviour
     {
         [SerializeField]
         private Transform _transform;
