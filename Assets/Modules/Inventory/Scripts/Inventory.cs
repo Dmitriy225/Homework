@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Modules.Inventories
 {
@@ -171,11 +172,6 @@ namespace Modules.Inventories
             return true;
         }
 
-        private void FillMatrixSpace(Item item)
-        {
-            FillMatrixSpace(0, 0, _width, _height, item);
-        }
-
         private void FillMatrixSpace(int startX, int startY, int sizeX, int sizeY, Item item)
         {
             for (int x = startX; x < startX + sizeX; x++)
@@ -216,7 +212,12 @@ namespace Modules.Inventories
 
         private bool AddItemSilently(Item item)
         {
-            return AddItemSilently(item, out Vector2Int _);
+            if (!FindFreePosition(item, out var position))
+            {
+                return false;
+            }
+
+            return AddItemSilently(item, position.x, position.y);
         }
 
         private bool AddItemSilently(Item item, out Vector2Int position)
@@ -477,7 +478,7 @@ namespace Modules.Inventories
             }
 
             _items.Clear();            
-            FillMatrixSpace(null);
+            FillMatrixSpace(0, 0, _width, _height, null);
 
             OnCleared?.Invoke();
         }
@@ -533,40 +534,36 @@ namespace Modules.Inventories
         /// </summary>
         public void OptimizeSpace()
         {
-            var resultMatrix = new Item[_width, _height];
             var items = new Item[_items.Keys.Count];
             _items.Keys.CopyTo(items, 0);
-
             Clear();
             
             var sortedItems = Sort(items);
 
             foreach (var item in sortedItems)
             {
-                AddItem(item);
+                AddItemSilently(item);
             }
         }
 
         private List<Item> Sort(Item[] items)
         {
             var sortedItems = new List<Item>(items);
+            int count = sortedItems.Count;
 
-            for (int i = 0; i < sortedItems.Count - 1; i++)
+            for (int i = 1; i < count; i++)
             {
-                for (int j = 0; j < sortedItems.Count - 1 - i; j++)
+                Item item = sortedItems[i];
+                int space = item.Size.x * item.Size.y;
+                int j = i - 1;
+
+                while (j >= 0 && (sortedItems[j].Size.x * sortedItems[j].Size.y) < space)
                 {
-                    Item current = sortedItems[j];
-                    Item next = sortedItems[j + 1];
-
-                    int currentItemSpace = current.Size.x * current.Size.y;
-                    int nextItemSpace = next.Size.x * next.Size.y;
-
-                    if (currentItemSpace < nextItemSpace)
-                    {
-                        sortedItems[j] = next;
-                        sortedItems[j + 1] = current;
-                    }
+                    sortedItems[j + 1] = sortedItems[j];
+                    j--;
                 }
+
+                sortedItems[j + 1] = item;
             }
 
             return sortedItems;
@@ -617,7 +614,7 @@ namespace Modules.Inventories
 
                     if (item == null)
                     {
-                        name = "Null";
+                        name = "null";
                     }
                     else
                     {
