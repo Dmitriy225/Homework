@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using Modules.Utils;
+﻿using Modules.Utils;
 using UnityEngine;
 
 namespace Game
