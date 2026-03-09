@@ -324,8 +324,6 @@ MonoBehaviour:
   _renderer: {fileID: 795037679980988590}
   _material: {fileID: 2100000, guid: 1a2a1cc8952ca774c939c363a673700f, type: 2}
   _damageViewComponent: {fileID: 3846916892377791594}
-  _deadViewComponent: {fileID: 9069471230607746026}
-  _movementViewComponent: {fileID: 4100907189557524788}
   _audioSource: {fileID: 8141832910989862937}
   _fireSFX: {fileID: 8300000, guid: 4b0fadb8fc7bdaf489e9f7879d3c71bb, type: 3}
   _damageSFX: {fileID: 8300000, guid: 9d2f129290cb1a6489928f3dde8dbb39, type: 3}
@@ -343,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee7d1a8f1c5c8b459911d992992279d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.DamageViewComponent
+  _healthComponent: {fileID: 8776036950273527089}
   _renderer: {fileID: 795037679980988590}
   _viewConfig: {fileID: 11400000, guid: 927700ae29366c042b95a552a5f0a41f, type: 2}
 --- !u!114 &9069471230607746026
@@ -357,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8095b5ab10551134aad80289fa5d69ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.DeadViewComponent
+  _healthComponent: {fileID: 8776036950273527089}
   _viewTransform: {fileID: 1249406481267314197}
   _destroyEffectPrefab: {fileID: 198423008863891152, guid: 91acdbd2820f9ce418996a0a24d91079, type: 3}
 --- !u!114 &4100907189557524788
@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afa72b47e9ee404f8de4f5fa280a6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.MovementViewComponent
+  _movementComponent: {fileID: 1890657567784614641}
   _viewTransform: {fileID: 1249406481267314197}
   _movementViewConfig: {fileID: 11400000, guid: 1f848d3bdcd73e04aa879e8c9f6e6cd7, type: 2}
 --- !u!1 &8547742604600331572
