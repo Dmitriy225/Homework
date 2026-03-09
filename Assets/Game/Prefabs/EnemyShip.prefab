@@ -221,7 +221,6 @@ MonoBehaviour:
   _healthConfig: {fileID: 11400000, guid: eb1662badc96a0643901fd23c8b1eebd, type: 2}
   _fireComponent: {fileID: 8140967496814553291}
   _firePoint: {fileID: 3195880656587174614}
-  _bulletConfig: {fileID: 11400000, guid: 351344f06766ae34ca36fae70d5025a3, type: 2}
 --- !u!114 &1086140151738059400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,9 +339,6 @@ MonoBehaviour:
   _ship: {fileID: 102605417607457000}
   _renderer: {fileID: 1333951631294404335}
   _material: {fileID: 2100000, guid: 9230c0065227c1b4da624a6d952f0ce2, type: 2}
-  _damageViewComponent: {fileID: 7280679100331671728}
-  _deadViewComponent: {fileID: 6320530437619273784}
-  _movementViewComponent: {fileID: 3991496128548421606}
   _fireVFX: {fileID: 1792961037914348205}
 --- !u!114 &7280679100331671728
 MonoBehaviour:
@@ -356,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee7d1a8f1c5c8b459911d992992279d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.DamageViewComponent
+  _healthComponent: {fileID: 1289002472503888216}
   _renderer: {fileID: 1333951631294404335}
   _viewConfig: {fileID: 11400000, guid: 927700ae29366c042b95a552a5f0a41f, type: 2}
 --- !u!114 &6320530437619273784
@@ -370,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8095b5ab10551134aad80289fa5d69ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.DeadViewComponent
+  _healthComponent: {fileID: 1289002472503888216}
   _viewTransform: {fileID: 2570692159425164225}
   _destroyEffectPrefab: {fileID: 198423008863891152, guid: 91acdbd2820f9ce418996a0a24d91079, type: 3}
 --- !u!114 &3991496128548421606
@@ -384,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afa72b47e9ee404f8de4f5fa280a6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.MovementViewComponent
+  _movementComponent: {fileID: 1086140151738059400}
   _viewTransform: {fileID: 2570692159425164225}
   _movementViewConfig: {fileID: 11400000, guid: e6ebf0413d0b48b4fb1824e72ccdb100, type: 2}
 --- !u!1 &2239154907127902911
