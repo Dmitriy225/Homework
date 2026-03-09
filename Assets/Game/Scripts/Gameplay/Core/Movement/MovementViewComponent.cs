@@ -4,11 +4,8 @@ namespace Game
 {
     public sealed class MovementViewComponent : MonoBehaviour
     {
-        public Vector2 Direction
-        {
-            get => _direction;
-            set => _direction = value;
-        }
+        [SerializeField]
+        private MovementComponent _movementComponent;
 
         [SerializeField]
         private Transform _viewTransform;
@@ -18,7 +15,27 @@ namespace Game
 
         private Vector2 _direction;
 
-        public void AnimateMovement(float deltaTime)
+        private void OnEnable()
+        {
+            _movementComponent.OnMoved += OnMoved;
+        }
+
+        private void OnDisable()
+        {
+            _movementComponent.OnMoved -= OnMoved;
+        }
+
+        private void LateUpdate()
+        {
+            AnimateMovement(Time.deltaTime);
+        }
+
+        private void OnMoved(Vector2 direction)
+        {
+            _direction = direction;
+        }
+
+        private void AnimateMovement(float deltaTime)
         {
             float moveRotationAngle = _movementViewConfig.MoveRotationAngle;
             float moveSpeed = _movementViewConfig.MoveSpeed;
@@ -30,6 +47,6 @@ namespace Game
             Quaternion shipRotation = Quaternion.Euler(shipAngles);
             float t = moveSpeed * deltaTime;
             _viewTransform.localRotation = Quaternion.Lerp(_viewTransform.localRotation, shipRotation, t);
-        }
+        }       
     }
 }
