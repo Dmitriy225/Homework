@@ -285,6 +285,8 @@ GameObject:
   - component: {fileID: 3846916892377791594}
   - component: {fileID: 9069471230607746026}
   - component: {fileID: 4100907189557524788}
+  - component: {fileID: 7673768484080661564}
+  - component: {fileID: 4588037560601073868}
   m_Layer: 10
   m_Name: <Visual>
   m_TagString: Untagged
@@ -320,14 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaea775d03e53343851fee321882133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.PlayerShipView
-  _ship: {fileID: 328849090417711829}
-  _renderer: {fileID: 795037679980988590}
-  _material: {fileID: 2100000, guid: 1a2a1cc8952ca774c939c363a673700f, type: 2}
-  _damageViewComponent: {fileID: 3846916892377791594}
+  _healthComponent: {fileID: 8776036950273527089}
   _audioSource: {fileID: 8141832910989862937}
-  _fireSFX: {fileID: 8300000, guid: 4b0fadb8fc7bdaf489e9f7879d3c71bb, type: 3}
   _damageSFX: {fileID: 8300000, guid: 9d2f129290cb1a6489928f3dde8dbb39, type: 3}
-  _fireVFX: {fileID: 375007784130398055}
   _cameraShaker: {fileID: 0}
 --- !u!114 &3846916892377791594
 MonoBehaviour:
@@ -374,6 +371,35 @@ MonoBehaviour:
   _movementComponent: {fileID: 1890657567784614641}
   _viewTransform: {fileID: 1249406481267314197}
   _movementViewConfig: {fileID: 11400000, guid: 1f848d3bdcd73e04aa879e8c9f6e6cd7, type: 2}
+--- !u!114 &7673768484080661564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932017922939402051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f3188bb55e2b244a7d74277649e31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FireVfxComponent
+  _fireComponent: {fileID: 6107375178033848401}
+  _fireVFX: {fileID: 375007784130398055}
+--- !u!114 &4588037560601073868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932017922939402051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1f2aa96b6ccae4c8dfebd21d6ada8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.FireSfxComponent
+  _fireComponent: {fileID: 6107375178033848401}
+  _audioSource: {fileID: 8141832910989862937}
+  _fireSFX: {fileID: 8300000, guid: 4b0fadb8fc7bdaf489e9f7879d3c71bb, type: 3}
 --- !u!1 &8547742604600331572
 GameObject:
   m_ObjectHideFlags: 0
