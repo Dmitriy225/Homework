@@ -63,6 +63,11 @@ namespace Game
             _destinationComponent.Destination = destination;
         }
 
+        public void ResetHealth()
+        {
+            _healthComponent.AssignMax();
+        }
+
         private void OnEnable()
         {
             _healthComponent.OnEmptied += OnHealthEmptied;
