@@ -6,6 +6,9 @@ namespace Game
     public sealed class DamageViewComponent : MonoBehaviour
     {
         [SerializeField]
+        private HealthComponent _healthComponent;
+
+        [SerializeField]
         private Renderer _renderer;
 
         [SerializeField]
@@ -19,7 +22,17 @@ namespace Game
             _material = _renderer.material;    
         }
 
-        public void AnimateDamage()
+        private void OnEnable()
+        {
+            _healthComponent.OnReduced += AnimateDamage;
+        }
+
+        private void OnDisable()
+        {
+            _healthComponent.OnReduced -= AnimateDamage;
+        }
+
+        private void AnimateDamage()
         {
             if (_damageTweener.IsActive())
             {

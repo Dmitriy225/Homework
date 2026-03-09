@@ -46,16 +46,12 @@ namespace Game
         private void OnEnable()
         {
             _healthComponent.OnReduced += OnHealthReduced;
-            _healthComponent.OnReduced += _damageViewComponent.AnimateDamage;
-            _healthComponent.OnReduced += _cameraShaker.Shake;
             _fireComponent.OnFire += OnFire;
         }
 
         private void OnDisable()
         {
             _healthComponent.OnReduced -= OnHealthReduced;
-            _healthComponent.OnReduced -= _damageViewComponent.AnimateDamage;
-            _healthComponent.OnReduced -= _cameraShaker.Shake;
             _fireComponent.OnFire -= OnFire;
         }
 
@@ -67,6 +63,7 @@ namespace Game
 
         private void OnHealthReduced()
         {
+            _cameraShaker.Shake();
             _audioSource.PlayOneShot(_damageSFX);
         }
     }
