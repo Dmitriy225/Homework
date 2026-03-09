@@ -21,7 +21,7 @@ namespace Game
         private EnemyPool _pool;
 
         [SerializeField]
-        private PlayerShip _target;
+        private HealthComponent _target;
 
         [SerializeField]
         private PositionShuffler _spawnPositionShuffler;
@@ -40,7 +40,7 @@ namespace Game
 
         private void FixedUpdate()
         {
-            if (!_spawnCooldown.IsCompleted() || !_target.GetComponent<HealthComponent>().Exists()) // TODO: Убрать GetComponent
+            if (!_spawnCooldown.IsCompleted() || !_target.Exists())
             {
                 return;
             }
