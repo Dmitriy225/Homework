@@ -5,10 +5,10 @@ namespace Game
     public sealed class SpawnCooldown : MonoBehaviour
     {
         [SerializeField]
-        private float _minSpawnCooldown = 2;
+        private float _minCooldown = 2;
 
         [SerializeField]
-        private float _maxSpawnCooldown = 3;
+        private float _maxСooldown = 3;
 
         private Cooldown _cooldown;
 
@@ -35,7 +35,7 @@ namespace Game
 
         private float NextSpawnDuration()
         {
-            return Random.Range(_minSpawnCooldown, _maxSpawnCooldown);
+            return Random.Range(_minCooldown, _maxСooldown);
         }
     }
 }
