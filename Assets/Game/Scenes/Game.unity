@@ -1060,8 +1060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnCooldown: {fileID: 562298207}
   _pool: {fileID: 562298206}
-  _bulletManager: {fileID: 363245577}
-  _target: {fileID: 1650797545}
+  _target: {fileID: 1650797548}
   _spawnPositionShuffler:
     _positions:
     - {fileID: 5098186055898699330}
@@ -1110,8 +1109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d60521cacd3d7449f076bffa1156c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.SpawnCooldown
-  _minSpawnCooldown: 2
-  _maxSpawnCooldown: 3
+  _minCooldown: 2
+  "_max\u0421ooldown": 3
 --- !u!1 &574514311
 GameObject:
   m_ObjectHideFlags: 0
