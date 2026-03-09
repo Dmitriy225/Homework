@@ -30,9 +30,6 @@ namespace Game
         [SerializeField]
         private FireComponent _fireComponent;
 
-        [SerializeField]
-        private Transform _firePoint;
-
         private PlayerShip _target;
 
         public void Construct(BulletManager bulletManager, PlayerShip target)
@@ -52,7 +49,6 @@ namespace Game
 
             _fireComponent.Construct(
                 bulletManager,
-                _firePoint,
                 TeamType.Enemy,
                 () =>
                     _healthComponent.Exists()
@@ -80,7 +76,7 @@ namespace Game
         private void Update()
         {
             _fireComponent.TryFire(
-                (_target.transform.position - _firePoint.position).normalized
+                ((Vector2)_target.transform.position - _fireComponent.PointPosition).normalized
             );
         }
 

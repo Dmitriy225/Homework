@@ -24,9 +24,6 @@ namespace Game
         [Header("Combat")]
         [SerializeField]
         private FireComponent _fireComponent;
-
-        [SerializeField]
-        private Transform _firePoint;
         
         [Header("Bullets")]
         [SerializeField]
@@ -45,7 +42,6 @@ namespace Game
 
             _fireComponent.Construct(
                 _bulletManager,
-                _firePoint,
                 TeamType.Player,
                 () => _healthComponent.Exists()
             );

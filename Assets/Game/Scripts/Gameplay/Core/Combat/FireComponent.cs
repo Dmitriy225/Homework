@@ -7,13 +7,20 @@ namespace Game
     {
         public event Action OnFire;
 
+        public Vector2 PointPosition
+        {
+            get => _firePoint.position;
+        }
+
+        [SerializeField]
+        private Transform _firePoint;
+
         [SerializeField]
         private float _fireCooldown = 0.25f;
 
         [SerializeField]
         private BulletConfig _bulletConfig;
 
-        private Transform _firePoint;
         private Cooldown _cooldown;
         private BulletManager _bulletManager;
         private TeamType _team;
@@ -21,12 +28,10 @@ namespace Game
 
         public void Construct(
             BulletManager bulletManager,
-            Transform firePoint,
             TeamType team,
             Func<bool> condition)
         {
             _bulletManager = bulletManager;
-            _firePoint = firePoint;
             _team = team;
             _condition = condition;
             _cooldown = new Cooldown(_fireCooldown);
