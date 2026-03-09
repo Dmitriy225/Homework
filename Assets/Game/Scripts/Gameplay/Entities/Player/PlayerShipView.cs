@@ -12,12 +12,6 @@ namespace Game
         private FireComponent _fireComponent;
 
         [SerializeField]
-        private Renderer _renderer;
-
-        [SerializeField]
-        private Material _material;
-
-        [SerializeField]
         private DamageViewComponent _damageViewComponent;
 
         [SerializeField]
@@ -30,16 +24,12 @@ namespace Game
         private AudioClip _damageSFX;
 
         [SerializeField]
-        private ParticleSystem _fireVFX;
-
-        [SerializeField]
         private CameraShaker _cameraShaker;
 
         private void Awake()
         {
             _healthComponent = _ship.GetComponent<HealthComponent>();
             _fireComponent = _ship.GetComponent<FireComponent>();
-            _renderer.material = _material;
         }
 
         private void OnEnable()
@@ -57,7 +47,6 @@ namespace Game
         private void OnFire()
         {
             _audioSource.PlayOneShot(_fireSFX);
-            _fireVFX.Play();
         }
 
         private void OnHealthReduced()
