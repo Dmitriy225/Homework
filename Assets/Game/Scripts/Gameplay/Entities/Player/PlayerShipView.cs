@@ -6,19 +6,10 @@ namespace Game
     public sealed class PlayerShipView : MonoBehaviour
     {
         [SerializeField]
-        private PlayerShip _ship;
-
         private HealthComponent _healthComponent;
-        private FireComponent _fireComponent;
-
-        [SerializeField]
-        private DamageViewComponent _damageViewComponent;
 
         [SerializeField]
         private AudioSource _audioSource;
-
-        [SerializeField]
-        private AudioClip _fireSFX;
 
         [SerializeField]
         private AudioClip _damageSFX;
@@ -26,27 +17,14 @@ namespace Game
         [SerializeField]
         private CameraShaker _cameraShaker;
 
-        private void Awake()
-        {
-            _healthComponent = _ship.GetComponent<HealthComponent>();
-            _fireComponent = _ship.GetComponent<FireComponent>();
-        }
-
         private void OnEnable()
         {
             _healthComponent.OnReduced += OnHealthReduced;
-            _fireComponent.OnFire += OnFire;
         }
 
         private void OnDisable()
         {
             _healthComponent.OnReduced -= OnHealthReduced;
-            _fireComponent.OnFire -= OnFire;
-        }
-
-        private void OnFire()
-        {
-            _audioSource.PlayOneShot(_fireSFX);
         }
 
         private void OnHealthReduced()
