@@ -21,9 +21,6 @@ namespace Game
         private DamageViewComponent _damageViewComponent;
 
         [SerializeField]
-        private DeadViewComponent _deadViewComponent;
-
-        [SerializeField]
         private ParticleSystem _fireVFX;
 
         private void Awake()
@@ -36,14 +33,12 @@ namespace Game
         private void OnEnable()
         {
             _healthComponent.OnReduced += _damageViewComponent.AnimateDamage;
-            _healthComponent.OnEmptied += _deadViewComponent.InstantiateEffect;
             _fireComponent.OnFire += _fireVFX.Play;
         }
 
         private void OnDisable()
         {
             _healthComponent.OnReduced -= _damageViewComponent.AnimateDamage;
-            _healthComponent.OnEmptied -= _deadViewComponent.InstantiateEffect;
             _fireComponent.OnFire -= _fireVFX.Play;
         }
     }

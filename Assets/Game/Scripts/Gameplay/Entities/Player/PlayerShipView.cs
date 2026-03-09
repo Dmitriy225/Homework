@@ -22,9 +22,6 @@ namespace Game
         private DamageViewComponent _damageViewComponent;
 
         [SerializeField]
-        private DeadViewComponent _deadViewComponent;
-
-        [SerializeField]
         private AudioSource _audioSource;
 
         [SerializeField]
@@ -51,7 +48,6 @@ namespace Game
             _healthComponent.OnReduced += OnHealthReduced;
             _healthComponent.OnReduced += _damageViewComponent.AnimateDamage;
             _healthComponent.OnReduced += _cameraShaker.Shake;
-            _healthComponent.OnEmptied += _deadViewComponent.InstantiateEffect;
             _fireComponent.OnFire += OnFire;
         }
 
@@ -60,7 +56,6 @@ namespace Game
             _healthComponent.OnReduced -= OnHealthReduced;
             _healthComponent.OnReduced -= _damageViewComponent.AnimateDamage;
             _healthComponent.OnReduced -= _cameraShaker.Shake;
-            _healthComponent.OnEmptied -= _deadViewComponent.InstantiateEffect;
             _fireComponent.OnFire -= OnFire;
         }
 
