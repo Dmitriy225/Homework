@@ -30,7 +30,7 @@ namespace Game
         private PositionShuffler _attackPositionShuffler;
 
         private int _destroyedEnemies;
-        private List<EnemyShip> _enemies = new();
+        private readonly List<EnemyShip> _enemies = new();
 
         private void Awake()
         {
