@@ -16,7 +16,6 @@ namespace Game
         [SerializeField]
         private BulletViewConfig _viewConfig;
 
-        [SerializeField]
         private ParticleSystem _currentProjectileVfx;
 
         private void Awake()
