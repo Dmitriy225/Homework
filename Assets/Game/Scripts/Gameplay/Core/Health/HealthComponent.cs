@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 namespace Game
 {
@@ -55,6 +56,12 @@ namespace Game
             }
 
             return true;
+        }
+
+        public void AssignMax()
+        {
+            _current = _max;
+            OnStateChanged?.Invoke(_current, _max);
         }
     }
 }
