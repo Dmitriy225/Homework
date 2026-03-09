@@ -220,7 +220,6 @@ MonoBehaviour:
   _healthComponent: {fileID: 1289002472503888216}
   _healthConfig: {fileID: 11400000, guid: eb1662badc96a0643901fd23c8b1eebd, type: 2}
   _fireComponent: {fileID: 8140967496814553291}
-  _firePoint: {fileID: 3195880656587174614}
 --- !u!114 &1086140151738059400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6a577ee0613d94fb1355cbb1dc197c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.FireComponent
+  _firePoint: {fileID: 3195880656587174614}
   _fireCooldown: 1.25
   _bulletConfig: {fileID: 11400000, guid: 351344f06766ae34ca36fae70d5025a3, type: 2}
 --- !u!114 &7993781408452810414
