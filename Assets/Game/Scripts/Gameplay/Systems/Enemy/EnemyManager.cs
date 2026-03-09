@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -20,9 +22,6 @@ namespace Game
         private EnemyPool _pool;
 
         [SerializeField]
-        private BulletManager _bulletManager;
-
-        [SerializeField]
         private PlayerShip _target;
 
         [SerializeField]
@@ -32,6 +31,7 @@ namespace Game
         private PositionShuffler _attackPositionShuffler;
 
         private int _destroyedEnemies;
+        private List<EnemyShip> _enemies = new();
 
         private void Awake()
         {
@@ -49,15 +49,25 @@ namespace Game
             var enemy = _pool.Rent();
             enemy.SetDestination(_attackPositionShuffler.NextPosition());
             enemy.transform.position = _spawnPositionShuffler.NextPosition();
+            enemy.OnDied += Despawn;
 
             _spawnCooldown.Restart();
         }
 
         public void Despawn(EnemyShip enemy)
         {
+            enemy.OnDied -= Despawn;
             _destroyedEnemies++;
             OnEnemyDestroyed?.Invoke(_destroyedEnemies);
             _pool.Return(enemy);
+        }
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _enemies.Count; i++)
+            {
+                _enemies[i].OnDied -= Despawn;
+            }
         }
     }
 }
