@@ -16,5 +16,11 @@ namespace Game
             base.OnCreate(item);
             item.Construct(_bulletManager, _target);
         }
+
+        protected override void OnRent(EnemyShip item)
+        {
+            base.OnRent(item);
+            item.ResetHealth();
+        }
     }
 }
