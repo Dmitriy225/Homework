@@ -6,6 +6,8 @@ namespace Game
 {
     public sealed class EnemyShip : MonoBehaviour
     {
+        public event Action<EnemyShip> OnDied;
+
         [Header("Movement")]
         [SerializeField]
         private MovementComponent _movementComponent;
@@ -33,9 +35,7 @@ namespace Game
 
         private PlayerShip _target;
 
-        public void Construct(
-            BulletManager bulletManager,
-            PlayerShip target)
+        public void Construct(BulletManager bulletManager, PlayerShip target)
         {
             _target = target;
 
@@ -69,12 +69,12 @@ namespace Game
 
         private void OnEnable()
         {
-            _healthComponent.OnEmptied += Disable;
+            _healthComponent.OnEmptied += OnHealthEmptied;
         }
 
         private void OnDisable()
         {
-            _healthComponent.OnEmptied -= Disable;
+            _healthComponent.OnEmptied -= OnHealthEmptied;
         }
 
         private void Update()
@@ -84,9 +84,9 @@ namespace Game
             );
         }
 
-        private void Disable()
+        private void OnHealthEmptied()
         {
-            gameObject.SetActive(false);
+            OnDied?.Invoke(this);
         }
     }
 }
