@@ -1179,6 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameContextInstaller
   _snake: {fileID: 1446817787}
+  _gameUI: {fileID: 1764093826}
 --- !u!1 &1587245287
 GameObject:
   m_ObjectHideFlags: 0
