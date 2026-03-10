@@ -9,9 +9,6 @@ namespace Game
     public class GameContextInstaller : MonoInstaller
     {
         [SerializeField]
-        private Snake _snake;
-
-        [SerializeField]
         private WorldBounds _worldBounds;
 
         [SerializeField]
@@ -19,17 +16,6 @@ namespace Game
 
         public override void InstallBindings()
         {
-            Container
-                .Bind<ISnake>()
-                .To<Snake>()
-                .FromInstance(_snake)
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<SnakeInputController>()
-                .AsSingle()
-                .NonLazy();
-
             Container
                 .Bind<IGameUI>()
                 .To<GameUI>()
