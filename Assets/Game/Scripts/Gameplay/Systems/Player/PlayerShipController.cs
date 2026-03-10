@@ -8,7 +8,6 @@ namespace Game
         private PlayerShip _ship;
 
         private MovementComponent _movementComponent;
-        private FireComponent _fireComponent;
 
         private void Awake()
         {
