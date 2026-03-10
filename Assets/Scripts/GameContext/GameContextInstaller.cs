@@ -12,6 +12,9 @@ namespace Game
         private Snake _snake;
 
         [SerializeField]
+        private WorldBounds _worldBounds;
+
+        [SerializeField]
         private GameUI _gameUI;
 
         public override void InstallBindings()
@@ -31,6 +34,12 @@ namespace Game
                 .Bind<IGameUI>()
                 .To<GameUI>()
                 .FromInstance(_gameUI)
+                .AsSingle();
+
+            Container
+                .Bind<IWorldBounds>()
+                .To<WorldBounds>()
+                .FromInstance(_worldBounds)
                 .AsSingle();
 
             Container
