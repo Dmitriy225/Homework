@@ -1,10 +1,8 @@
 ﻿using Modules;
-using System;
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace SnakeGame
 {
     public sealed class SnakeContextInstaller : MonoInstaller
     {

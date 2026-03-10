@@ -1,10 +1,9 @@
 ﻿using Modules;
-using SnakeGame;
 using System;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace SnakeGame
 {
     public sealed class DefeatPresenter : IInitializable, IDisposable
     {

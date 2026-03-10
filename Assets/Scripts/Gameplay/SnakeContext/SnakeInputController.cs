@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace SnakeGame
 {
     public sealed class SnakeInputController : ITickable
     {
