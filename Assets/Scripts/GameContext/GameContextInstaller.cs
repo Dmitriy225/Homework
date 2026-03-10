@@ -1,20 +1,27 @@
+using Game;
 using Modules;
 using UnityEngine;
 using Zenject;
 
-public class GameContextInstaller : MonoInstaller
+namespace Game
 {
-    [SerializeField]
-    private Snake _snake;
-
-    public override void InstallBindings()
+    public class GameContextInstaller : MonoInstaller
     {
-        Container
-            .Bind<ISnake>()
-            .To<Snake>()
-            .FromInstance(_snake)
-            .AsSingle();
+        [SerializeField]
+        private Snake _snake;
 
+        public override void InstallBindings()
+        {
+            Container
+                .Bind<ISnake>()
+                .To<Snake>()
+                .FromInstance(_snake)
+                .AsSingle();
 
+            Container
+                .BindInterfacesAndSelfTo<SnakeInputController>()
+                .AsSingle()
+                .NonLazy();
+        }
     }
 }
