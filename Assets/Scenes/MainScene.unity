@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 1543675346}
   - component: {fileID: 1543675345}
   - component: {fileID: 1543675347}
+  - component: {fileID: 1543675348}
   m_Layer: 0
   m_Name: '[System]'
   m_TagString: Untagged
@@ -1134,6 +1135,8 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1543675347}
+  - {fileID: 1543675348}
+  - {fileID: 1764093827}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1178,9 +1181,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9758e50e060c8f848ae28b9c15ebb569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameContextInstaller
-  _snake: {fileID: 1446817787}
   _worldBounds: {fileID: 1431199845}
-  _gameUI: {fileID: 1764093826}
+--- !u!114 &1543675348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543675344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797c320588083334bbef790d58e67d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakeGame.SnakeContextInstaller
+  _snake: {fileID: 1446817787}
 --- !u!1 &1587245287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764093825}
+  - component: {fileID: 1764093827}
   - component: {fileID: 1764093826}
   m_Layer: 0
   m_Name: '[UI]'
@@ -1458,6 +1473,19 @@ MonoBehaviour:
   _loseScreen: {fileID: 1338628983}
   _difficultyText: {fileID: 1202478200}
   _score: {fileID: 1914371282}
+--- !u!114 &1764093827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764093824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8827481b54b46634baf5c70318b034a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakeGame.UIInstaller
+  _gameUI: {fileID: 1764093826}
 --- !u!1 &1801370839
 GameObject:
   m_ObjectHideFlags: 0
