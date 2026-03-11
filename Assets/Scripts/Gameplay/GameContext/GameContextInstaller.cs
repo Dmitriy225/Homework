@@ -1,5 +1,7 @@
+using Modules;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 namespace SnakeGame
 {
