@@ -17,12 +17,17 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<DefeatPresenter>()
+                .BindInterfacesTo<ScorePresenter>()
                 .AsSingle()
                 .NonLazy();
 
             Container
                 .BindInterfacesTo<LevelPresenter>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .BindInterfacesTo<DefeatPresenter>()
                 .AsSingle()
                 .NonLazy();
         }
