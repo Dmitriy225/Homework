@@ -10,6 +10,9 @@ namespace SnakeGame
         private WorldBounds _worldBounds;
 
         [SerializeField]
+        private int _levelCount;
+
+        [SerializeField]
         private Coin _coinPrefab;
 
         [SerializeField]
@@ -22,6 +25,12 @@ namespace SnakeGame
                 .To<WorldBounds>()
                 .FromInstance(_worldBounds)
                 .AsSingle();
+
+            Container
+                .Bind<IDifficulty>()
+                .To<Difficulty>()
+                .AsSingle()
+                .WithArguments(_levelCount);
 
             Container
                 .BindMemoryPoolCustomInterface<Coin, CoinPool, IMemoryPool<Vector2Int, Coin>>()
