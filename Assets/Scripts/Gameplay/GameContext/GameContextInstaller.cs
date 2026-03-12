@@ -24,10 +24,14 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindMemoryPoolCustomInterface<ICoin, CoinPool, IMemoryPool<Vector2Int, Coin>>()
+                .BindMemoryPoolCustomInterface<Coin, CoinPool, IMemoryPool<Vector2Int, Coin>>()
                 .WithInitialSize(9)
                 .FromComponentInNewPrefab(_coinPrefab)
                 .UnderTransform(_coinContainer)
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<LevelManager>()
                 .AsSingle();
         }
     }
