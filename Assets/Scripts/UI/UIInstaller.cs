@@ -20,6 +20,11 @@ namespace SnakeGame
                 .BindInterfacesTo<DefeatPresenter>()
                 .AsSingle()
                 .NonLazy();
+
+            Container
+                .BindInterfacesTo<LevelPresenter>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

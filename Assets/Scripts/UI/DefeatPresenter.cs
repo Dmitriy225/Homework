@@ -7,15 +7,15 @@ namespace SnakeGame
 {
     public sealed class DefeatPresenter : IInitializable, IDisposable
     {
+        private readonly IGameUI _gameUI;
         private readonly ISnake _snake;
         private readonly IWorldBounds _worldBounds;
-        private readonly IGameUI _gameUI;
 
-        public DefeatPresenter(ISnake snake, IWorldBounds worldBounds, IGameUI gameUI)
+        public DefeatPresenter(IGameUI gameUI, ISnake snake, IWorldBounds worldBounds)
         {
+            _gameUI = gameUI;
             _snake = snake;
             _worldBounds = worldBounds;
-            _gameUI = gameUI;
         }
 
         public void Initialize()
