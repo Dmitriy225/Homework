@@ -17,6 +17,7 @@ namespace SnakeGame
 
         public void Initialize()
         {
+            OnDifficultyChanged();
             _difficulty.OnStateChanged += OnDifficultyChanged;
         }
 
@@ -27,7 +28,7 @@ namespace SnakeGame
 
         private void OnDifficultyChanged()
         {
-            _coinManager.Spawn(_difficulty.Current);
+            _coinManager.Spawn(_difficulty.Current + 1);
         }
     }
 }
