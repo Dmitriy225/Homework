@@ -1,9 +1,11 @@
 ﻿using Modules;
+using System;
 using UnityEngine;
+using Zenject;
 
 namespace SnakeGame
 {
-    public sealed class CoinDespawnController
+    public sealed class CoinDespawnController : IInitializable, IDisposable
     {
         private readonly ISnake _snake;
         private readonly CoinManager _coinManager;
