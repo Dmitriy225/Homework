@@ -38,10 +38,6 @@ namespace SnakeGame
                 .FromComponentInNewPrefab(_coinPrefab)
                 .UnderTransform(_coinContainer)
                 .AsSingle();
-
-            Container
-                .BindInterfacesTo<LevelManager>()
-                .AsSingle();
         }
     }
 }
