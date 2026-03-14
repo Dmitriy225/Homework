@@ -33,10 +33,31 @@ namespace SnakeGame
                 .WithArguments(_levelCount);
 
             Container
+                .Bind<IScore>()
+                .To<Score>()
+                .AsSingle();
+
+            Container
                 .BindMemoryPoolCustomInterface<Coin, CoinPool, IMemoryPool<Vector2Int, Coin>>()
                 .WithInitialSize(9)
                 .FromComponentInNewPrefab(_coinPrefab)
                 .UnderTransform(_coinContainer)
+                .AsSingle();
+
+            Container
+                .Bind<CoinManager>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<CoinSpawnController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<CoinDespawnController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<LevelSwitchController>()
                 .AsSingle();
         }
     }
