@@ -54,5 +54,10 @@ namespace SnakeGame
         {
             return _coinMap.ContainsKey(key);
         }
+
+        public ICoin GetCoin(Vector2Int key)
+        {
+            return _coinMap.GetValueOrDefault(key);
+        }
     }
 }
