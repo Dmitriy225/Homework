@@ -49,7 +49,11 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<LevelSwitchObserver>()
+                .BindInterfacesTo<CoinSpawnController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<CoinDespawnController>()
                 .AsSingle();
 
             Container

@@ -4,12 +4,12 @@ using Zenject;
 
 namespace SnakeGame
 {
-    public sealed class LevelSwitchObserver : IInitializable, IDisposable
+    public sealed class CoinSpawnController : IInitializable, IDisposable
     {
         private readonly IDifficulty _difficulty;
         private readonly CoinManager _coinManager;
 
-        public LevelSwitchObserver(IDifficulty difficulty, CoinManager coinManager)
+        public CoinSpawnController(IDifficulty difficulty, CoinManager coinManager)
         {
             _difficulty = difficulty;
             _coinManager = coinManager;
@@ -17,16 +17,16 @@ namespace SnakeGame
 
         public void Initialize()
         {
-            SpawnCoins();
-            _difficulty.OnStateChanged += SpawnCoins;
+            Spawn();
+            _difficulty.OnStateChanged += Spawn;
         }
 
         public void Dispose()
         {
-            _difficulty.OnStateChanged -= SpawnCoins;
+            _difficulty.OnStateChanged -= Spawn;
         }
 
-        private void SpawnCoins()
+        private void Spawn()
         {
             _coinManager.Spawn(_difficulty.Current + 1);
         }
