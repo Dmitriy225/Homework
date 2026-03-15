@@ -18,13 +18,16 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<SnakeCoinConsumer>()
+                .Bind<SnakeCoinConsumer>()
                 .AsSingle();
 
             Container
                 .BindInterfacesTo<SnakeInputController>()
-                .AsSingle()
-                .NonLazy();           
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<SnakeMovementObserver>()
+                .AsSingle();
         }
     }
 }
