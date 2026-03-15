@@ -59,6 +59,10 @@ namespace SnakeGame
             Container
                 .BindInterfacesTo<LevelSwitchController>()
                 .AsSingle();
+
+            Container
+                .BindInterfacesTo<ScoreController>()
+                .AsSingle();
         }
     }
 }
