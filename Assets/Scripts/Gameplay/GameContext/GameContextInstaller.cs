@@ -20,12 +20,14 @@ namespace SnakeGame
 
         public override void InstallBindings()
         {
+            // WorldBounds
             Container
                 .Bind<IWorldBounds>()
                 .To<WorldBounds>()
                 .FromInstance(_worldBounds)
                 .AsSingle();
 
+            // Level
             Container
                 .Bind<IDifficulty>()
                 .To<Difficulty>()
@@ -33,10 +35,24 @@ namespace SnakeGame
                 .WithArguments(_levelCount);
 
             Container
+                .BindInterfacesTo<LevelSwitchController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<LevelSwitchObserver>()
+                .AsSingle();
+
+            // Score
+            Container
                 .Bind<IScore>()
                 .To<Score>()
                 .AsSingle();
 
+            Container
+                .BindInterfacesTo<ScoreController>()
+                .AsSingle();
+
+            // Coins
             Container
                 .BindMemoryPoolCustomInterface<Coin, CoinPool, IMemoryPool<Vector2Int, Coin>>()
                 .WithInitialSize(9)
@@ -49,20 +65,8 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<CoinSpawnController>()
-                .AsSingle();
-
-            Container
                 .BindInterfacesTo<CoinDespawnController>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<LevelSwitchController>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<ScoreController>()
-                .AsSingle();
+                .AsSingle(); 
         }
     }
 }
