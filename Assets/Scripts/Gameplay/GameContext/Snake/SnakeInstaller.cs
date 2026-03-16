@@ -4,7 +4,7 @@ using Zenject;
 
 namespace SnakeGame
 {
-    public sealed class SnakeContextInstaller : MonoInstaller
+    public sealed class SnakeInstaller : MonoInstaller
     {
         [SerializeField]
         private Snake _snake;
