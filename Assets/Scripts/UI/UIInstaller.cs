@@ -27,7 +27,7 @@ namespace SnakeGame
                 .NonLazy();
 
             Container
-                .BindInterfacesTo<DefeatPresenter>()
+                .BindInterfacesTo<GameOverPresenter>()
                 .AsSingle()
                 .NonLazy();
         }
