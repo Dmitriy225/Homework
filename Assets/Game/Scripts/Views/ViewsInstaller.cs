@@ -1,12 +1,19 @@
+using UnityEngine;
 using Zenject;
 
 namespace Game.Views
 {
     public sealed class ViewsInstaller : MonoInstaller
     {
+        [SerializeField]
+        private CurrencyView _moneyView;
+
         public override void InstallBindings()
         {
-            //TODO:
+            Container
+                .Bind<CurrencyView>()
+                .FromInstance(_moneyView)
+                .AsSingle();
         }
     }
 }
