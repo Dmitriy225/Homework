@@ -11,7 +11,9 @@ namespace Game.Presenters
     {
         public override void InstallBindings()
         {
-            //TODO:
+            Container
+                .BindInterfacesTo<MoneyPresenter>()
+                .AsSingle();
         }
     }
 }
