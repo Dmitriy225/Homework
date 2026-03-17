@@ -1,9 +1,9 @@
-﻿using Modules.Money;
+﻿using Game.Views;
+using Modules.Money;
 using System;
-using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Presenters
 {
     public sealed class MoneyPresenter : IInitializable, IDisposable
     {
