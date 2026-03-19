@@ -30,7 +30,7 @@ namespace Game.Presenters
 
         private void UpdateLockState()
         {
-            _view.SetImageIcon(_planet.GetIcon(_planet.IsUnlocked));
+            _view.SetIcon(_planet.GetIcon(_planet.IsUnlocked));
         }
     }
 }

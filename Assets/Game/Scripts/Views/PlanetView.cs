@@ -7,11 +7,11 @@ namespace Game.Views
     public sealed class PlanetView : MonoBehaviour
     {
         [SerializeField]
-        private Image _image;
+        private Image _iconImage;
 
-        public void SetImageIcon(Sprite icon)
+        public void SetIcon(Sprite icon)
         {
-            _image.sprite = icon;
+            _iconImage.sprite = icon;
         }
     }
 }
