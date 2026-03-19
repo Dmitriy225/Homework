@@ -1,6 +1,7 @@
 ﻿using Game.Views;
 using Modules.Money;
 using System;
+using Unity.Collections.LowLevel.Unsafe;
 using Zenject;
 
 namespace Game.Presenters
@@ -19,6 +20,7 @@ namespace Game.Presenters
 
         public void Initialize()
         {
+            UpdateMoney(_storage.Money);
             _storage.OnMoneyChanged += OnMoneyChanged;
             _storage.OnMoneyEarned += OnMoneyEarned;
             _storage.OnMoneySpent += OnMoneySpent;
@@ -38,8 +40,7 @@ namespace Game.Presenters
                 return;
             }
 
-            _currentValue = newValue;
-            _view.ChangeValue(newValue.ToString());
+            UpdateMoney(newValue);
         }
 
         private void OnMoneyEarned(int value, int range)
@@ -52,6 +53,12 @@ namespace Game.Presenters
         {
             _currentValue = value;
             _view.RemoveValue(value.ToString());
+        }
+
+        private void UpdateMoney(int value)
+        {
+            _currentValue = value;
+            _view.ChangeValue(value.ToString());
         }
     }
 }
