@@ -1,3 +1,4 @@
+using Game.Views;
 using Modules.Planets;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,10 @@ namespace Game.Presenters
         {
             Container
                 .BindInterfacesTo<MoneyPresenter>()
+                .AsSingle();
+
+            Container
+                .BindFactory<PlanetView, IPlanet, PlanetPresenter, PlanetPresenter.Factory>()
                 .AsSingle();
 
             Container
