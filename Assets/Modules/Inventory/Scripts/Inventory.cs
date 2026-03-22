@@ -22,7 +22,6 @@ namespace Modules.Inventories
         private readonly int _height;
         private readonly Dictionary<Item, Vector2Int> _items;
         private readonly Item[,] _matrix;
-        private readonly RectInt _rect;
 
         public Inventory(int width, int height)
         {
@@ -35,7 +34,6 @@ namespace Modules.Inventories
             _height = height;
             _items = new Dictionary<Item, Vector2Int>();
             _matrix = new Item[width, height];
-            _rect = new RectInt(Vector2Int.zero, new Vector2Int(width, height));
         }
 
         public Inventory(
@@ -306,6 +304,14 @@ namespace Modules.Inventories
                 && startY + height <= _height;
         }
 
+        private bool ContainsPosition(int x, int y)
+        {
+            return x >= 0
+                && y >= 0
+                && x < _width
+                && y < _height;
+        }
+
         private bool IsValidSize(int width, int height)
         {
             return width > 0 && height > 0;
@@ -411,7 +417,7 @@ namespace Modules.Inventories
 
         public bool TryGetItem(int x, int y, out Item item)
         {
-            if (!_rect.Contains(new Vector2Int(x, y)))
+            if (!ContainsPosition(x, y))
             {
                 item = null;
                 return false;
@@ -513,7 +519,7 @@ namespace Modules.Inventories
                 return false;
             }
 
-            if (!_rect.Contains(position))
+            if (!ContainsPosition(position.x, position.y))
             {
                 return false;
             }
