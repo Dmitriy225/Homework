@@ -602,7 +602,9 @@ namespace Modules.Inventories
         {
             public int Compare(Item item1, Item item2)
             {
-                return (item2.Size.x * item2.Size.y).CompareTo(item1.Size.x * item1.Size.y);
+                var size1 = item1.Size;
+                var size2 = item2.Size;
+                return (size2.x * size2.y).CompareTo(size1.x * size1.y);
             }
         }
     }
