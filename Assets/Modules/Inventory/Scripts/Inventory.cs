@@ -367,11 +367,11 @@ namespace Modules.Inventories
                 return false;
             }
 
-            position = _items.GetValueOrDefault(item);
-            _items.Remove(item);
-
-            var size = item.Size;
-            FillMatrixSpace(position.x, position.y, size.x, size.y, null);
+            if (_items.Remove(item, out position))
+            {
+                var size = item.Size;
+                FillMatrixSpace(position.x, position.y, size.x, size.y, null);
+            }          
 
             return true;
         }
