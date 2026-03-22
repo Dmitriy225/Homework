@@ -456,9 +456,8 @@ namespace Modules.Inventories
                 return;
             }
 
-            _items.Clear();            
-            FillMatrixSpace(0, 0, _width, _height, null);
-
+            _items.Clear();
+            Array.Clear(_matrix, 0, _matrix.Length);
             OnCleared?.Invoke();
         }
 
