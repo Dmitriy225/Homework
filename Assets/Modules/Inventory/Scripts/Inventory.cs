@@ -1,6 +1,8 @@
 using System;
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,6 +11,8 @@ namespace Modules.Inventories
 {
     public class Inventory : IEnumerable<Item>
     {
+        private readonly static ItemSpaceComparer _itemSpaceComparer = new();
+
         public event Action<Item, Vector2Int> OnAdded;
         public event Action<Item, Vector2Int> OnRemoved;
         public event Action<Item, Vector2Int> OnMoved;
@@ -505,39 +509,25 @@ namespace Modules.Inventories
         /// </summary>
         public void OptimizeSpace()
         {
-            var items = new Item[_items.Keys.Count];
-            _items.Keys.CopyTo(items, 0);
-            Clear();
+            int count = _items.Keys.Count;
+            var items = ArrayPool<Item>.Shared.Rent(count);
+            ArrayPool<Item>.Shared.Return(items);
             
-            var sortedItems = Sort(items);
-
-            foreach (var item in sortedItems)
+            try
             {
-                AddItemSilently(item);
-            }
-        }
+                _items.Keys.CopyTo(items, 0);
+                Clear();
+                Array.Sort(items, 0, count, _itemSpaceComparer);
 
-        private List<Item> Sort(Item[] items)
-        {
-            var sortedItems = new List<Item>(items);
-            int count = sortedItems.Count;
-
-            for (int i = 1; i < count; i++)
-            {
-                Item item = sortedItems[i];
-                int space = item.Size.x * item.Size.y;
-                int j = i - 1;
-
-                while (j >= 0 && (sortedItems[j].Size.x * sortedItems[j].Size.y) < space)
+                for (int i = 0; i < count; i++)
                 {
-                    sortedItems[j + 1] = sortedItems[j];
-                    j--;
+                    AddItemSilently(items[i]);
                 }
-
-                sortedItems[j + 1] = item;
             }
-
-            return sortedItems;
+            finally
+            {
+                ArrayPool<Item>.Shared.Return(items);
+            }
         }
 
         /// <summary>
@@ -606,6 +596,14 @@ namespace Modules.Inventories
             }
 
             return builder.ToString();
+        }
+
+        private sealed class ItemSpaceComparer : IComparer<Item>
+        {
+            public int Compare(Item item1, Item item2)
+            {
+                return (item2.Size.x * item2.Size.y).CompareTo(item1.Size.x * item1.Size.y);
+            }
         }
     }
 }
