@@ -118,17 +118,8 @@ namespace Modules.Inventories
                 throw new ArgumentException();
             }
 
-            if (_items.ContainsKey(item))
-            {
-                return false;
-            }
-
-            if (!IsFreeSpace(startX, startY, size.x, size.y))
-            {
-                return false;
-            }
-
-            return true;
+            return !_items.ContainsKey(item)
+                && IsFreeSpace(startX, startY, size.x, size.y);
         }
 
         /// <summary>
@@ -186,12 +177,8 @@ namespace Modules.Inventories
         /// </summary>
         public bool CanAddItem(Item item)
         {
-            if (!FindFreePosition(item, out var position))
-            {
-                return false;
-            }
-
-            return CanAddItem(item, position);
+            return FindFreePosition(item, out var position)
+                && CanAddItem(item, position);
         }
 
         /// <summary>
@@ -210,22 +197,14 @@ namespace Modules.Inventories
 
         private bool AddItemSilently(Item item)
         {
-            if (!FindFreePosition(item, out var position))
-            {
-                return false;
-            }
-
-            return AddItemSilently(item, position.x, position.y);
+            return FindFreePosition(item, out var position)
+                && AddItemSilently(item, position.x, position.y);
         }
 
         private bool AddItemSilently(Item item, out Vector2Int position)
         {
-            if (!FindFreePosition(item, out position))
-            {
-                return false;
-            }
-
-            return AddItemSilently(item, position.x, position.y);
+            return FindFreePosition(item, out position)
+                && AddItemSilently(item, position.x, position.y);
         }
 
         /// <summary>
@@ -424,13 +403,7 @@ namespace Modules.Inventories
             }
 
             item = _matrix[x, y];
-
-            if (item == null)
-            {
-                return false;
-            }
-
-            return true;
+            return item != null;
         }
 
         /// <summary>
@@ -514,17 +487,10 @@ namespace Modules.Inventories
                 throw new ArgumentNullException();
             }
 
-            if (!_items.ContainsKey(item))
-            {
-                return false;
-            }
-
-            if (!ContainsPosition(position.x, position.y))
-            {
-                return false;
-            }
-
-            if (!FindFreePosition(item, out Vector2Int _))
+            if (!_items.ContainsKey(item)
+                || !ContainsPosition(position.x, position.y)
+                || !FindFreePosition(item, out Vector2Int _)
+            )
             {
                 return false;
             }
