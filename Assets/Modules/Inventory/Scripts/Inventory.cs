@@ -1,9 +1,11 @@
+using PlasticGui.WorkspaceWindow.PendingChanges;
 using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -211,9 +213,6 @@ namespace Modules.Inventories
                 && AddItemSilently(item, position.x, position.y);
         }
 
-        /// <summary>
-        /// Returns a free position for a specified item
-        /// </summary>
         public bool FindFreePosition(Item item, out Vector2Int position)
         {
             if (item == null)
@@ -222,7 +221,33 @@ namespace Modules.Inventories
                 return false;
             }
 
-            return FindFreePosition(item.Size, out position);
+            int sizeX = item.Size.x;
+            int sizeY = item.Size.y;
+
+            if (!IsValidSize(sizeX, sizeY))
+            {
+                throw new ArgumentException();
+            }
+
+            for (int y = 0; y < _height; y++)
+            {
+                for (int x = 0; x < _width; x++)
+                {
+                    if (IsOccupied(item, x, y))
+                    {
+                        continue;
+                    }
+
+                    if (IsFreeSpace(item, x, y))
+                    {
+                        position = new Vector2Int(x, y);
+                        return true;
+                    }
+                }
+            }
+
+            position = new Vector2Int();
+            return false;
         }
 
         public bool FindFreePosition(Vector2Int size, out Vector2Int position)
@@ -279,6 +304,30 @@ namespace Modules.Inventories
             return true;
         }
 
+        private bool IsFreeSpace(Item item, int startX, int startY)
+        {
+            int width = item.Size.x;
+            int height = item.Size.y;
+
+            if (!ContainsSpace(startX, startY, width, height))
+            {
+                return false;
+            }
+
+            for (int x = startX; x < startX + width; x++)
+            {
+                for (int y = startY; y < startY + height; y++)
+                {
+                    if (IsOccupied(item, x, y))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         private bool ContainsSpace(int startX, int startY, int width, int height)
         {
             return startX >= 0
@@ -324,6 +373,18 @@ namespace Modules.Inventories
         public bool IsOccupied(int x, int y)
         {
             return _matrix[x, y] != null;
+        }
+
+        private bool IsOccupied(Item item, int x, int y)
+        {
+            if (_items.TryGetValue(item, out Vector2Int position) &&
+                position == new Vector2Int(x, y)
+            )
+            {
+                return false;
+            }
+
+            return IsOccupied(x, y);
         }
 
         /// <summary>
@@ -490,9 +551,9 @@ namespace Modules.Inventories
                 throw new ArgumentNullException();
             }
 
-            if (!_items.ContainsKey(item)
-                || !ContainsPosition(position.x, position.y)
-                || !FindFreePosition(item, out Vector2Int _)
+            if (!_items.ContainsKey(item) ||
+                !ContainsPosition(position.x, position.y) ||
+                !FindFreePosition(item, out Vector2Int _)
             )
             {
                 return false;
@@ -548,13 +609,7 @@ namespace Modules.Inventories
         /// </summary>
         public void CopyTo(Item[,] matrix)
         {
-            for (int x = 0; x < _width; x++)
-            {
-                for (int y = 0; y < _height; y++)
-                {
-                    matrix[x, y] = _matrix[x, y];
-                }
-            }
+            Array.Copy(_matrix, matrix, _matrix.Length);
         }
 
         /// <summary>
