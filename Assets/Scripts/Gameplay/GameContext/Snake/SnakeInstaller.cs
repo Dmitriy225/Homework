@@ -1,4 +1,5 @@
-﻿using Modules;
+﻿using Game;
+using Modules;
 using UnityEngine;
 using Zenject;
 
@@ -27,6 +28,10 @@ namespace SnakeGame
 
             Container
                 .BindInterfacesTo<SnakeMovementObserver>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<SnakeStopController>()
                 .AsSingle();
         }
     }
