@@ -5,12 +5,12 @@ using Zenject;
 
 namespace SnakeGame
 {
-    public sealed class LevelSwitchController : IInitializable, IDisposable
+    public sealed class DifficultyController : IInitializable, IDisposable
     {
         private readonly CoinManager _coinManager;
         private readonly IDifficulty _difficulty;
 
-        public LevelSwitchController(CoinManager coinManager, IDifficulty difficulty)
+        public DifficultyController(CoinManager coinManager, IDifficulty difficulty)
         {
             _coinManager = coinManager;
             _difficulty = difficulty;

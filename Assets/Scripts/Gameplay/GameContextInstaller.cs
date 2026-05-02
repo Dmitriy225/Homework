@@ -35,7 +35,7 @@ namespace SnakeGame
                 .WithArguments(_levelCount);
 
             Container
-                .BindInterfacesTo<LevelSwitchController>()
+                .BindInterfacesTo<DifficultyController>()
                 .AsSingle();
 
             Container
