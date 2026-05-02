@@ -11,6 +11,9 @@ namespace Game.Views
         [SerializeField]
         private PlanetView[] _planetViews;
 
+        [SerializeField]
+        private PlanetPopup _planetPopup;
+
         public override void InstallBindings()
         {
             Container
@@ -25,6 +28,11 @@ namespace Game.Views
                     .FromInstance(planetView)
                     .AsCached();
             }
+
+            Container
+                .Bind<PlanetPopup>()
+                .FromInstance(_planetPopup)
+                .AsSingle();
         }
     }
 }

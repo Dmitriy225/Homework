@@ -27,6 +27,10 @@ namespace Game.Presenters
             Container
                 .BindInterfacesTo<PlanetListPresenter>()
                 .AsSingle();
+
+            Container
+                .BindInterfacesAndSelfTo<PlanetPopupPresenter>()
+                .AsSingle();
         }
     }
 }

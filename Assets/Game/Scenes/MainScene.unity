@@ -1407,6 +1407,7 @@ MonoBehaviour:
   - {fileID: 1247079642}
   - {fileID: 1000499688}
   - {fileID: 249258345}
+  _planetPopup: {fileID: 1052078977217180738}
 --- !u!1 &974007725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,6 +2320,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6f3aabda10ed1841ba1c1a8999ef4ba, type: 3}
+--- !u!114 &1052078977217180738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5773896465553488310, guid: c6f3aabda10ed1841ba1c1a8999ef4ba, type: 3}
+  m_PrefabInstance: {fileID: 1052078977217180737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a23cfcc2865f5e4fbd6b427f6e736ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Views::Game.Views.PlanetPopup
 --- !u!1001 &6121086404576301247
 PrefabInstance:
   m_ObjectHideFlags: 0

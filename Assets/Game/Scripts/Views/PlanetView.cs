@@ -15,6 +15,12 @@ namespace Game.Views
             remove { _button.OnClick -= value; }
         }
 
+        public event Action OnHold
+        {
+            add { _button.OnHold += value; }
+            remove { _button.OnHold -= value; }
+        }
+
         [SerializeField]
         private SmartButton _button;
 

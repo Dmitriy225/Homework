@@ -11,14 +11,17 @@ namespace Game.Presenters
     {
         private readonly PlanetView _view;
         private readonly IPlanet _planet;
+        private readonly PlanetPopupPresenter _planetPopupPresenter;
 
         public PlanetPresenter(
             PlanetView view,
-            IPlanet planet
+            IPlanet planet,
+            PlanetPopupPresenter planetPopupPresenter
         )
         {
             _view = view;
             _planet = planet;
+            _planetPopupPresenter = planetPopupPresenter;
         }
 
         public void Initialize()
@@ -28,6 +31,7 @@ namespace Game.Presenters
             OnIncomeReady(_planet.IsIncomeReady);
 
             _view.OnClicked += OnClicked;
+            _view.OnHold += OnHold;
             _planet.OnUnlocked += OnUnlocked;
             _planet.OnIncomeTimeChanged += OnIncomeTimeChanged;
             _planet.OnIncomeReady += OnIncomeReady;
@@ -36,6 +40,7 @@ namespace Game.Presenters
         public void Dispose()
         {
             _view.OnClicked -= OnClicked;
+            _view.OnHold -= OnHold;
             _planet.OnUnlocked -= OnUnlocked;
             _planet.OnIncomeTimeChanged -= OnIncomeTimeChanged;
             _planet.OnIncomeReady -= OnIncomeReady;
@@ -51,6 +56,12 @@ namespace Game.Presenters
             {
                 _planet.Unlock();
             }
+        }
+
+        private void OnHold()
+        {
+            if (_planet.IsUnlocked)
+                _planetPopupPresenter.Show(_planet);
         }
 
         private void OnUnlocked()
