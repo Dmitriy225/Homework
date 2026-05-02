@@ -19,15 +19,11 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .Bind<SnakeCoinConsumer>()
+                .BindInterfacesTo<SnakeExpandController>()
                 .AsSingle();
 
             Container
                 .BindInterfacesTo<SnakeInputController>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<SnakeMovementObserver>()
                 .AsSingle();
 
             Container

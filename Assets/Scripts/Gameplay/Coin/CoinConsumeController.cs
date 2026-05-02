@@ -5,19 +5,16 @@ using Zenject;
 
 namespace SnakeGame
 {
-    public sealed class SnakeMovementObserver : IInitializable, IDisposable
+    public sealed class CoinConsumeController : IInitializable, IDisposable
     {
         private readonly ISnake _snake;
-        private readonly SnakeCoinConsumer _coinConsumer;
         private readonly CoinManager _coinManager;
 
-        public SnakeMovementObserver(
+        public CoinConsumeController(
             ISnake snake,
-            SnakeCoinConsumer coinConsumer,
             CoinManager coinManager)
         {
             _snake = snake;
-            _coinConsumer = coinConsumer;
             _coinManager = coinManager;
         }
 
@@ -33,12 +30,7 @@ namespace SnakeGame
 
         private void OnSnakeMoved(Vector2Int position)
         {
-            if (!_coinManager.Contains(position))
-            {
-                return;
-            }
-
-            _coinConsumer.Consume(_coinManager.GetCoin(position));
+            _coinManager.TryConsumeCoin(position);
         }
     }
 }

@@ -65,8 +65,8 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
-                .BindInterfacesTo<CoinDespawnController>()
-                .AsSingle(); 
+                .BindInterfacesTo<CoinConsumeController>()
+                .AsSingle();
         }
     }
 }

@@ -6,23 +6,23 @@ namespace SnakeGame
 {
     public sealed class ScoreController : IInitializable, IDisposable
     {
-        private readonly SnakeCoinConsumer _coinConsumer;
+        private readonly CoinManager _coinManager;
         private readonly IScore _score;
 
-        public ScoreController(SnakeCoinConsumer coinConsumer, IScore score)
+        public ScoreController(CoinManager coinManager, IScore score)
         {
-            _coinConsumer = coinConsumer;
+            _coinManager = coinManager;
             _score = score;
         }
 
         public void Initialize()
         {
-            _coinConsumer.OnConsumed += OnCoinConsumed;
+            _coinManager.OnConsumed += OnCoinConsumed;
         }
 
         public void Dispose()
         {
-            _coinConsumer.OnConsumed -= OnCoinConsumed;
+            _coinManager.OnConsumed -= OnCoinConsumed;
         }
 
         private void OnCoinConsumed(ICoin coin)

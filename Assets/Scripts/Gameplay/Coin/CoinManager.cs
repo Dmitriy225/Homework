@@ -8,6 +8,7 @@ namespace SnakeGame
 {
     public sealed class CoinManager
     {
+        public event Action<ICoin> OnConsumed;
         public event Action OnEmptied;
 
         private readonly IMemoryPool<Vector2Int, Coin> _coinPool;
@@ -24,7 +25,20 @@ namespace SnakeGame
             _worldBounds = worldBounds;
         }
 
-        public bool Despawn(ICoin coin)
+        public bool TryConsumeCoin(Vector2Int key)
+        {
+            if (!_coinMap.ContainsKey(key))
+            {
+                return false;
+            }
+
+            var coin = _coinMap[key];
+            OnConsumed?.Invoke(coin);
+            Despawn(coin);
+            return true;
+        }
+
+        private bool Despawn(ICoin coin)
         {
             if (!_coins.Contains(coin))
             {
@@ -52,16 +66,6 @@ namespace SnakeGame
                 _coinMap.Add(key, coin);
                 _coins.Add(coin);
             }
-        }
-
-        public bool Contains(Vector2Int key)
-        {
-            return _coinMap.ContainsKey(key);
-        }
-
-        public ICoin GetCoin(Vector2Int key)
-        {
-            return _coinMap.GetValueOrDefault(key);
         }
     }
 }
