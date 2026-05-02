@@ -6,8 +6,6 @@ namespace SnakeGame
 {
     public sealed class SnakeInputController : ITickable
     {
-        private const string Horizontal = "Horizontal";
-        private const string Vertical = "Vertical";
         private readonly ISnake _snake;
 
         public SnakeInputController(ISnake snake)
@@ -17,19 +15,19 @@ namespace SnakeGame
 
         public void Tick()
         {
-            if (Input.GetAxisRaw(Horizontal) == -1)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 _snake.Turn(SnakeDirection.LEFT);
             }
-            else if (Input.GetAxisRaw(Horizontal) == 1)
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 _snake.Turn(SnakeDirection.RIGHT);
             }
-            else if (Input.GetAxisRaw(Vertical) == 1)
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 _snake.Turn(SnakeDirection.UP);
             }
-            else if (Input.GetAxisRaw(Vertical) == -1)
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 _snake.Turn(SnakeDirection.DOWN);
             }
