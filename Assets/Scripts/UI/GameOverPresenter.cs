@@ -1,6 +1,4 @@
-﻿using Modules;
-using System;
-using UnityEngine;
+﻿using System;
 using Zenject;
 
 namespace SnakeGame
@@ -8,55 +6,27 @@ namespace SnakeGame
     public sealed class GameOverPresenter : IInitializable, IDisposable
     {
         private readonly IGameUI _gameUI;
-        private readonly ISnake _snake;
-        private readonly IDifficulty _difficulty;
-        private readonly IWorldBounds _worldBounds;
+        private readonly GameCycle _gameCycle;
 
-        public GameOverPresenter(
-            IGameUI gameUI,
-            ISnake snake,
-            IDifficulty difficulty,
-            IWorldBounds worldBounds)
+        public GameOverPresenter(IGameUI gameUI, GameCycle gameCycle)
         {
-            _gameUI = gameUI;
-            _snake = snake;
-            _difficulty = difficulty;
-            _worldBounds = worldBounds;
+            this._gameUI = gameUI;
+            this._gameCycle = gameCycle;
         }
 
         public void Initialize()
         {
-            _snake.OnMoved += OnSnakeMoved;
-            _snake.OnSelfCollided += OnSnakeSelfCollided;
-            _difficulty.OnStateChanged += OnLevelChanged;
+            _gameCycle.OnFinished += OnFinished;
         }
 
         public void Dispose()
         {
-            _snake.OnMoved -= OnSnakeMoved;
-            _snake.OnSelfCollided -= OnSnakeSelfCollided;
-            _difficulty.OnStateChanged -= OnLevelChanged;
+            _gameCycle.OnFinished -= OnFinished;
         }
 
-        private void OnSnakeMoved(Vector2Int position)
+        private void OnFinished(bool win)
         {
-            if (!_worldBounds.IsInBounds(position))
-            {
-                _gameUI.GameOver(false);
-            }
-        }
-
-        private void OnSnakeSelfCollided()
-        {
-            _gameUI.GameOver(false);
-        }
-
-        private void OnLevelChanged()
-        {
-            if (_difficulty.Current == _difficulty.Max)
-            {
-                _gameUI.GameOver(true);
-            }
+            _gameUI.GameOver(win);
         }
     }
 }

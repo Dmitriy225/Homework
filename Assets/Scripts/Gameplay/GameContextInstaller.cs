@@ -67,6 +67,19 @@ namespace SnakeGame
             Container
                 .BindInterfacesTo<CoinSpawnController>()
                 .AsSingle();
+
+            // GameCycle
+            Container
+                .Bind<GameCycle>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<DifficultyGameCycleController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<SnakeGameCycleController>()
+                .AsSingle();
         }
     }
 }
