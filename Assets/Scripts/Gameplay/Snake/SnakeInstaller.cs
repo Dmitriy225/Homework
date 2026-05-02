@@ -23,6 +23,10 @@ namespace SnakeGame
                 .AsSingle();
 
             Container
+                .BindInterfacesTo<SnakeSpeedController>()
+                .AsSingle();
+
+            Container
                 .BindInterfacesTo<SnakeInputController>()
                 .AsSingle();
 

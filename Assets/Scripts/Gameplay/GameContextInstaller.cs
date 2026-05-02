@@ -27,7 +27,7 @@ namespace SnakeGame
                 .FromInstance(_worldBounds)
                 .AsSingle();
 
-            // Level
+            // Difficulty
             Container
                 .Bind<IDifficulty>()
                 .To<Difficulty>()
@@ -36,10 +36,6 @@ namespace SnakeGame
 
             Container
                 .BindInterfacesTo<DifficultyController>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesTo<LevelSwitchObserver>()
                 .AsSingle();
 
             // Score
@@ -66,6 +62,10 @@ namespace SnakeGame
 
             Container
                 .BindInterfacesTo<CoinConsumeController>()
+                .AsSingle();
+
+            Container
+                .BindInterfacesTo<CoinSpawnController>()
                 .AsSingle();
         }
     }
