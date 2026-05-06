@@ -103,7 +103,7 @@ namespace Game.Presenters
             _particleAnimator.Emit(
                 _view.transform.position,
                 _currencyView.transform.position,
-                onFinished: () => _currencyView.AddValue(_moneyStorage.Money, value)
+                onFinished: () => _currencyView.AddValue(_moneyStorage.Money - value, value)
             );
         }
 
