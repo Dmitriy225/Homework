@@ -1,3 +1,4 @@
+using Modules.UI;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,9 @@ namespace Game.Views
 
         [SerializeField]
         private PlanetPopup _planetPopup;
+
+        [SerializeField]
+        private ParticleAnimator _particleAnimator;
 
         public override void InstallBindings()
         {
@@ -32,6 +36,11 @@ namespace Game.Views
             Container
                 .Bind<PlanetPopup>()
                 .FromInstance(_planetPopup)
+                .AsSingle();
+
+            Container
+                .Bind<ParticleAnimator>()
+                .FromInstance(_particleAnimator)
                 .AsSingle();
         }
     }
