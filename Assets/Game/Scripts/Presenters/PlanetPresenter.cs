@@ -100,10 +100,12 @@ namespace Game.Presenters
 
         private void OnGathered(int value)
         {
+            Debug.Log(_moneyStorage.Money);
+            Debug.Log(value);
             _particleAnimator.Emit(
                 _view.transform.position,
                 _currencyView.transform.position,
-                onFinished: () => _currencyView.AddValue(_moneyStorage.Money - value, value)
+                onFinished: () => _currencyView.AddValue(_moneyStorage.Money, value)
             );
         }
 

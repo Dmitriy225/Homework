@@ -20,27 +20,27 @@ namespace Game.Presenters
         public void Initialize()
         {
             UpdateMoney(_storage.Money);
-            _storage.OnMoneyChanged += OnMoneyChanged;
+            //_storage.OnMoneyChanged += OnMoneyChanged;
             //_storage.OnMoneyEarned += OnMoneyEarned;
             _storage.OnMoneySpent += OnMoneySpent;
         }
 
         public void Dispose()
         {
-            _storage.OnMoneyChanged -= OnMoneyChanged;
+            //_storage.OnMoneyChanged -= OnMoneyChanged;
             //_storage.OnMoneyEarned -= OnMoneyEarned;
             _storage.OnMoneySpent -= OnMoneySpent;
         }
 
-        private void OnMoneyChanged(int newValue, int previousValue)
-        {
-            if (_currentValue == _storage.Money)
-            {
-                return;
-            }
+        //private void OnMoneyChanged(int newValue, int previousValue)
+        //{
+        //    if (_currentValue == _storage.Money)
+        //    {
+        //        return;
+        //    }
 
-            UpdateMoney(newValue);
-        }
+        //    UpdateMoney(newValue);
+        //}
 
         //private void OnMoneyEarned(int value, int range)
         //{
