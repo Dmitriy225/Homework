@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 7845036276167105276}
   - component: {fileID: 4998109996826579298}
   - component: {fileID: 9111860641350533513}
+  - component: {fileID: 1791667891464931918}
+  - component: {fileID: 3060646280595869340}
+  - component: {fileID: 8558636307283913271}
+  - component: {fileID: 7683209407214654500}
   m_Layer: 3
   m_Name: GameObject
   m_TagString: Platform
@@ -107,6 +111,58 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1791667891464931918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240930164425400058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34f94a5a8c6b6d4aa256f567be3ee7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Platform
+--- !u!114 &3060646280595869340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240930164425400058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780c43c4e6c15bd4a856134a785243c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.MoveRequestComponent
+  _moveDuration: 0.1
+--- !u!114 &8558636307283913271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240930164425400058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b4c715012943db9fdf26735a9e7876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.MoveTransformComponent
+  _speed: 2
+--- !u!114 &7683209407214654500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240930164425400058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b313f81ee4af5479037a5b81081daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.PatrolComponent
+  _firstPoint: {fileID: 5434138037557620653}
+  _secondPoint: {fileID: 7441270365842623162}
 --- !u!1 &2402534428499199933
 GameObject:
   m_ObjectHideFlags: 0

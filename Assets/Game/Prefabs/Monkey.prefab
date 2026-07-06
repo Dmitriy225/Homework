@@ -11,6 +11,17 @@ GameObject:
   - component: {fileID: 6915912117526977926}
   - component: {fileID: 4964224926931193953}
   - component: {fileID: 6914819918122429636}
+  - component: {fileID: 3642552915012544524}
+  - component: {fileID: 6297320916127834994}
+  - component: {fileID: 965167290040081319}
+  - component: {fileID: 4150264327577596802}
+  - component: {fileID: 5808530846128111639}
+  - component: {fileID: 966196070963340322}
+  - component: {fileID: 55599442543246409}
+  - component: {fileID: 5085504288935954682}
+  - component: {fileID: 3457665905262485477}
+  - component: {fileID: 3756291235368575564}
+  - component: {fileID: 294374765824613694}
   m_Layer: 8
   m_Name: Monkey
   m_TagString: Untagged
@@ -107,6 +118,169 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.074934, y: 4.362532}
   m_EdgeRadius: 0
+--- !u!114 &3642552915012544524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf4e90969b12ec49a023092bfb72383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Monkey
+  _lookCircleDetector: {fileID: 5085504288935954682}
+  _pushCircleDetector: {fileID: 3457665905262485477}
+  _damage: 10
+--- !u!114 &6297320916127834994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7246bdb0d9af44fa945f8bed8138ba95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.HealthComponent
+  _maxHealth: 5
+--- !u!114 &965167290040081319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b05357ad05e344e855a305f05ffdaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.JumpDelayRequestComponent
+  _jumpComponent: {fileID: 4150264327577596802}
+  _cooldown:
+    _time: 0.15
+    _duration: 0.15
+  _delay:
+    _time: 1
+    _duration: 1
+--- !u!114 &4150264327577596802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3bc3480d380ce743afe0fa1c17ec680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.JumpComponent
+  _rigidbody: {fileID: 4964224926931193953}
+  _force: {x: 0, y: 300}
+--- !u!114 &5808530846128111639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef560812c9a1483c8053064d68926d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.GroundedComponent
+  _feet: {fileID: 6915912117526977926}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _groundDistance: 0.5
+--- !u!114 &966196070963340322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e9c6873c214b3e9c13ab1f9fb92d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.ExtraGravityComponent
+  _gravity: -7
+--- !u!114 &55599442543246409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd8ed7bbf274eea99360b8b879f3cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.LookComponent
+--- !u!114 &5085504288935954682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd907db186e6a14a96d6abee5282618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.CircleDetector
+  _point: {fileID: 6915912117526977926}
+  _radius: 10
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &3457665905262485477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd907db186e6a14a96d6abee5282618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.CircleDetector
+  _point: {fileID: 6915912117526977926}
+  _radius: 4
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &3756291235368575564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16615f4fd9aa496686de7e8755045b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.CollisionComponent
+--- !u!114 &294374765824613694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084178272520813888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d34f97427f9e164591b1c72edbaabbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.PushComponent
+  _origin: {fileID: 6915912117526977926}
+  _force: {x: 20, y: 2}
 --- !u!1 &3667686093434619927
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8502224344827965514}
+  - component: {fileID: 3682001322727790399}
   - component: {fileID: 6958152867094090083}
   m_Layer: 0
   m_Name: '[Visual]'
@@ -140,6 +315,19 @@ Transform:
   - {fileID: 4238300519197751424}
   m_Father: {fileID: 6915912117526977926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3682001322727790399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667686093434619927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8a9cc4fe3be1f43b4f54cfb05ff0ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.MonkeyView
+  _animator: {fileID: 7716971095677979633}
 --- !u!114 &6958152867094090083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +480,11 @@ SpriteRenderer:
 --- !u!212 &7065660415826569011 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8405434783778038837, guid: ce7f63d0c8a9443bdbea77973710fe09, type: 3}
+  m_PrefabInstance: {fileID: 1632659114803643142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7716971095677979633 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9056860363101505783, guid: ce7f63d0c8a9443bdbea77973710fe09, type: 3}
   m_PrefabInstance: {fileID: 1632659114803643142}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &8502633902376773403 stripped
