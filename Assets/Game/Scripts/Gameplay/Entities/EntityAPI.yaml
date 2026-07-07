@@ -1,0 +1,32 @@
+header: EntityAPI
+entityType: IEntity
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: Game
+className: EntityAPI
+directory: Assets/Game/Scripts/Gameplay/Entities
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- Position: IVariable<Vector3>
+- Rotation: IVariable<Quaternion>
+- Health: Health
+
+# Movement
+- MoveRequest: IRequest<Vector3>
+- MoveCondition: IExpression<Vector3, bool>
+- MoveAction: ICompositeAction<Vector3, float>
+- MoveEvent: IEvent<Vector3>
+- MoveSpeed: IValue<float>
+
+# Rotation
+- RotateRequest: IRequest<Vector3>
+- RotateCondition: IExpression<Vector3, bool>
+- RotateAction: ICompositeAction<Vector3, float>
+- RotateEvent: IEvent<Vector3>
+- RotateSpeed: IValue<float>
