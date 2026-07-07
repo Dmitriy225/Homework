@@ -55,7 +55,7 @@ namespace Game
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.A)) // TODO: Вынести управление в контроллер
+            if (Input.GetKey(KeyCode.A))
             {
                 _moveRequestComponent.SetDirection(Vector2.left);
             }
