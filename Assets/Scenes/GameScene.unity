@@ -14122,6 +14122,78 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4999998, y: 0.27415082, z: 2.5000048}
   m_Center: {x: -1.2499853, y: 0.13707541, z: 1.25}
+--- !u!1 &1099719342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099719345}
+  - component: {fileID: 1099719344}
+  - component: {fileID: 1099719343}
+  m_Layer: 0
+  m_Name: '[PlayerContext]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1099719343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099719342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08b105a222fcb047936a6352742c70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.PlayerContextInstaller
+  _character:
+    value: {fileID: 9048405937420967253}
+--- !u!114 &1099719344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099719342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be34bda748c71446a590c5029f29541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.PlayerContext
+  useUnityLifecycle: 1
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
+  - {fileID: 1099719343}
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 1
+  initialValueCapacity: 1
+  initialBehaviourCapacity: 0
+--- !u!4 &1099719345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099719342}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.90007, y: -10.20953, z: -2.93813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1102254444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27934,11 +28006,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25ded69825984498db7dacfedbed37a1, type: 3}
+--- !u!114 &9048405937420967253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4410574779017761553, guid: 25ded69825984498db7dacfedbed37a1, type: 3}
+  m_PrefabInstance: {fileID: 9048405937420967252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3142498ee69840069f3a93c11b1e1f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Atomic.Entities::Atomic.Entities.SceneEntity
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 4616498620599230045}
+  - {fileID: 1099719345}
   - {fileID: 9048405937420967252}
   - {fileID: 261950140}
   - {fileID: 1676091983}
