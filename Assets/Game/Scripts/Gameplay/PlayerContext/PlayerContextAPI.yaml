@@ -1,0 +1,16 @@
+header: EntityAPI
+entityType: IPlayerContext
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: Game
+className: PlayerContextAPI
+directory: Assets/Game/Scripts/Gameplay/PlayerContext
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- Character: IValue<IEntity>
