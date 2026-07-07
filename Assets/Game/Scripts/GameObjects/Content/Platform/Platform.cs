@@ -24,24 +24,9 @@ namespace Game
             _patrolComponent.SetCondition(() => true);
         }
 
-        //private void OnEnable()
-        //{
-        //    _collisionComponent.OnEntered += OnCollisionEntered;
-        //}
-
-        //private void OnDisable()
-        //{
-        //    _collisionComponent.OnEntered -= OnCollisionEntered;
-        //}
-
         private void FixedUpdate()
         {
             _moveRequestComponent.SetDirection(_patrolComponent.Direction);
-        }
-
-        private void OnCollisionEntered(Collision2D collision)
-        {
-            throw new NotImplementedException();
         }
 
         public void Invoke(Vector2 direction)
