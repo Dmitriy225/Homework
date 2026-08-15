@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7266534635133825670}
+  - {fileID: 4073939066226419466}
   m_Father: {fileID: 6795422085097260040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8829669804357326195
@@ -43,6 +44,9 @@ GameObject:
   - component: {fileID: 6795422085097260040}
   - component: {fileID: 2293162354956507346}
   - component: {fileID: 2852948263122311593}
+  - component: {fileID: 2140521655257923331}
+  - component: {fileID: 3707117530294660368}
+  - component: {fileID: 3942248563380409817}
   m_Layer: 12
   m_Name: Bullet
   m_TagString: Bullet
@@ -114,6 +118,64 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2140521655257923331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829669804357326195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f0ab5dce89aca40aa46aa8deee53ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.GameEntity
+  useUnityLifecycle: 1
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
+  - {fileID: 3707117530294660368}
+  - {fileID: 3942248563380409817}
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 1
+  initialValueCapacity: 1
+  initialBehaviourCapacity: 0
+--- !u!114 &3707117530294660368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829669804357326195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5dcb76d5763c124ebdf5ce8b05edf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.BulletInstaller
+  _moveSpeed:
+    value: 45
+  _lifeCooldown:
+    _duration: 3
+    _time: 3
+  _damage:
+    value: 1
+--- !u!114 &3942248563380409817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829669804357326195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a449f1b8b24f3a64181a8b2e625e047d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.BulletViewInstaller
+  _trail: {fileID: 6966344498039056152}
 --- !u!1001 &2426699191576222108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,4 +257,71 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 52d0bd6e4aee00143b33fe29c6913b38, type: 3}
   m_PrefabInstance: {fileID: 2426699191576222108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2928932791656830781
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2727797068301087175}
+    m_Modifications:
+    - target: {fileID: 755427217659705437, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_Name
+      value: BulletTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+--- !u!4 &4073939066226419466 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1165342850250043447, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+  m_PrefabInstance: {fileID: 2928932791656830781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &6966344498039056152 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 5190615940939624485, guid: 034704f5139d94360bb441f0e3d7c2b5, type: 3}
+  m_PrefabInstance: {fileID: 2928932791656830781}
   m_PrefabAsset: {fileID: 0}

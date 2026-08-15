@@ -1,0 +1,76 @@
+header: EntityAPI
+entityType: IGameEntity
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: Game
+className: GameEntityAPI
+directory: Assets/Game/Scripts/Gameplay/GameEntities
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+tags:
+- Character
+- Interactable
+
+values:
+- Health: Health
+- Trigger: TriggerEvents
+- CollisionEvents: CollisionEvents
+- AnimEvents: AnimationEvents
+- Target: IReactiveVariable<IGameEntity>
+
+# Transform
+- Position: IVariable<Vector3>
+- Rotation: IVariable<Quaternion>
+
+# Health
+- TakeDamageEvent: IEvent<>
+
+# Movement
+- MoveRequest: IRequest<Vector3>
+- MoveCondition: IExpression<Vector3, bool>
+- MoveAction: ICompositeAction<Vector3, float>
+- MoveEvent: IEvent<Vector3>
+- MoveSpeed: IValue<float>
+- PostMoveCooldown: ICooldown
+
+# Rotation
+- RotateRequest: IRequest<Vector3>
+- RotateCondition: IExpression<Vector3, bool>
+- RotateAction: ICompositeAction<Vector3, float>
+- RotateEvent: IEvent<Vector3>
+- RotateSpeed: IValue<float>
+
+# Combat
+- FireRequest: IRequest
+- FireCondition: IExpression<bool>
+- FireAction: ICompositeAction
+- FireEvent: IEvent
+- FireAnimDrivenEvent: IEvent
+- FireCooldown: ICooldown
+
+- AimRequest: IRequest<Vector3>
+- AimCondition: IExpression<Vector3, bool>
+- AimAction: ICompositeAction<Vector3, float>
+- AimEvent: IEvent<Vector3>
+- PostAimTimer: ITimer
+
+- Weapon: IValue<IGameEntity>
+- FirePosition: IValue<Vector3>
+- BulletPrefab: IVariable<GameEntity>
+- FireSpread: IValue<float>
+- Ammo: IReactiveVariable<int>
+- Damage: IValue<int>
+
+# Interaction
+- InteractCondition: IExpression<IGameEntity, bool>
+- InteractAction: ICompositeAction<IGameEntity>
+- InteractEvent: IEvent<IGameEntity>
+
+# View
+- Animator: Animator
+- AudioSource: AudioSource

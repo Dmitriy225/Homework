@@ -203,6 +203,9 @@ GameObject:
   m_Component:
   - component: {fileID: 906204727706075558}
   - component: {fileID: 3100126443347532207}
+  - component: {fileID: 603538924652377096}
+  - component: {fileID: 5291798079364481909}
+  - component: {fileID: 5442961027523088305}
   m_Layer: 11
   m_Name: HealthItem
   m_TagString: Untagged
@@ -249,6 +252,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.83043134, y: 0.5, z: 0.77526355}
   m_Center: {x: 0.00082963705, y: 0.25, z: 0.016052604}
+--- !u!114 &603538924652377096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903764127141603557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f0ab5dce89aca40aa46aa8deee53ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.GameEntity
+  useUnityLifecycle: 1
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
+  - {fileID: 5291798079364481909}
+  - {fileID: 5442961027523088305}
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 1
+  initialValueCapacity: 1
+  initialBehaviourCapacity: 0
+--- !u!114 &5291798079364481909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903764127141603557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62e1f7ed07363e4db412f5a2a2a2d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.MedicineKitInstaller
+  _hitPoints: 3
+--- !u!114 &5442961027523088305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903764127141603557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dda129a28db77e4f917487d3bd35d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.ItemViewInstaller
+  _audioSource: {fileID: 2298006360191853931}
+  _clip: {fileID: 8300000, guid: c2030a235a7cd4f398233cb679f7c4c8, type: 3}
+  _particle: {fileID: 3922024436423282089}
 --- !u!1001 &7860753860947560585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,6 +375,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02411e4e4440471cb7168a37d11464e, type: 3}
+--- !u!198 &3922024436423282089 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6591815806074881312, guid: d02411e4e4440471cb7168a37d11464e, type: 3}
+  m_PrefabInstance: {fileID: 7860753860947560585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5525685001891314167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2429741230345695614, guid: d02411e4e4440471cb7168a37d11464e, type: 3}
