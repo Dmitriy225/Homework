@@ -3766,7 +3766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: AudioEngine::Modules.AudioEvents.AudioSystem
   initOnAwake: 1
-  initialBanks: []
+  initialBanks:
+  - {fileID: 11400000, guid: 4bceaeeafbd5e9b408c0448492cf3da3, type: 2}
 --- !u!81 &895386440
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5825,6 +5826,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1523806506}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1529862977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529862979}
+  - component: {fileID: 1529862978}
+  m_Layer: 0
+  m_Name: GameplaySubScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1529862978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529862977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a335734b1572644a6a5d09d87adc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Scenes::Unity.Scenes.SubScene
+  _SceneAsset: {fileID: 102900000, guid: 340e573de21f49f408be72da51e3adf5, type: 3}
+  _HierarchyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  AutoLoadScene: 1
+  _SceneGUID:
+    Value:
+      x: 3547717699
+      y: 1335161134
+      z: 2905074560
+      w: 1608138261
+--- !u!4 &1529862979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529862977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1554375760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6696,6 +6750,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1602863809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1941246378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941246380}
+  - component: {fileID: 1941246379}
+  m_Layer: 0
+  m_Name: '[GameContext]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1941246379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941246378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e5d05a204e4354aa354c8fef2fed66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SampleGame.GameContextInstaller
+  _spatialHashInstaller:
+    _initialCapacity: 2048
+    _cellSize: 1
+--- !u!4 &1941246380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941246378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1953945048
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,6 +7736,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7078650420259860604, guid: a82794b5cab41ef46a2ba26c65e32fc1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8892893534178445372, guid: a82794b5cab41ef46a2ba26c65e32fc1,
         type: 3}
       propertyPath: _spawn.<Prefab>k__BackingField
@@ -7718,6 +7824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451604199148499651, guid: 6beeda15e0dde43369f490f535cbd94e,
+        type: 3}
+      propertyPath: _team
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6789685508163541426, guid: 6beeda15e0dde43369f490f535cbd94e,
         type: 3}
@@ -7856,7 +7967,7 @@ PrefabInstance:
     - target: {fileID: 6480648308455456160, guid: 09a84d2719aac2546a75f1c2d3fd70ee,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7247792576242046247, guid: 09a84d2719aac2546a75f1c2d3fd70ee,
         type: 3}
@@ -7897,4 +8008,6 @@ SceneRoots:
   - {fileID: 800337253}
   - {fileID: 1758309460}
   - {fileID: 895386437}
+  - {fileID: 1941246380}
   - {fileID: 2873688074205370161}
+  - {fileID: 1529862979}

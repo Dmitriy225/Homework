@@ -49,7 +49,7 @@ namespace Modules.AudioEvents
             //Generate event ids:
             foreach (Entry<AudioEvent> entry in _events)
                 writer.WriteLine(
-                    $"        public const AudioEventKey {ToTitleCase(entry.name)}Event = new AudioEventKey(\"{bankName}.{entry.name}\");");
+                    $"        public static readonly AudioEventKey {ToTitleCase(entry.name)}Event = new AudioEventKey(\"{bankName}.{entry.name}\");");
 
             writer.WriteLine();
 
