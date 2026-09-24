@@ -32,7 +32,6 @@ namespace SampleGame
                         Damage = request.Damage,
                         Instigator = request.Instigator
                     });
-                    Debug.Log("LAG");
                 }
                 requests.Clear();
             }

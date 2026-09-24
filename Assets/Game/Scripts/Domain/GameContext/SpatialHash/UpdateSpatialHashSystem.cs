@@ -7,49 +7,6 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace SampleGame
 {
-    // TODO: Разобраться с Job
-
-    //[BurstCompile]
-    //public unsafe partial struct UpdateSpatialHashSystem : ISystem
-    //{
-    //    public void OnCreate(ref SystemState state)
-    //    {
-    //        state.RequireForUpdate<SpatialHashData>();
-    //    }
-
-    //    [BurstCompile]
-    //    public void OnUpdate(ref SystemState state)
-    //    {
-    //        SpatialHashData spatialHashData = SystemAPI.GetSingleton<SpatialHashData>();
-
-    //        UnsafeParallelMultiHashMap<uint, Entity>* spatialHash = spatialHashData.map;
-    //        spatialHash->Clear();
-
-    //        state.Dependency = new UpdateJob(*spatialHash, spatialHashData.cellSize)
-    //            .ScheduleParallel(state.Dependency);
-    //    }
-
-    //    [WithPresent(typeof(DamageableTag))]
-    //    [BurstCompile]
-    //    private partial struct UpdateJob : IJobEntity
-    //    {
-    //        private UnsafeParallelMultiHashMap<uint, Entity>.ParallelWriter _spatialHash;
-    //        private readonly float _cellSize;
-
-    //        public UpdateJob(UnsafeParallelMultiHashMap<uint, Entity> spatialHash, float cellSize) : this()
-    //        {
-    //            _spatialHash = spatialHash.AsParallelWriter();
-    //            _cellSize = cellSize;
-    //        }
-
-    //        private void Execute(Entity entity, in LocalTransform transform)
-    //        {
-    //            uint hash = SpatialHashUseCase.Hash(transform.Position, _cellSize);
-    //            _spatialHash.Add(hash, entity);
-    //        }
-    //    }
-    //}
-
     [BurstCompile]
     public unsafe partial struct UpdateSpatialHashSystem : ISystem
     {
@@ -62,19 +19,31 @@ namespace SampleGame
         public void OnUpdate(ref SystemState state)
         {
             SpatialHashData spatialHashData = SystemAPI.GetSingleton<SpatialHashData>();
+
             UnsafeParallelMultiHashMap<uint, Entity>* spatialHash = spatialHashData.map;
             spatialHash->Clear();
-            float cellSize = spatialHashData.cellSize;
 
-            foreach (
-                var (transform, entity)
-                in SystemAPI.Query<LocalTransform>()
-                .WithAll<DamageableTag>()
-                .WithEntityAccess()
-            )
+            state.Dependency = new UpdateJob(*spatialHash, spatialHashData.cellSize)
+                .ScheduleParallel(state.Dependency);
+        }
+
+        [WithPresent(typeof(DamageableTag))]
+        [BurstCompile]
+        private partial struct UpdateJob : IJobEntity
+        {
+            private UnsafeParallelMultiHashMap<uint, Entity>.ParallelWriter _spatialHash;
+            private readonly float _cellSize;
+
+            public UpdateJob(UnsafeParallelMultiHashMap<uint, Entity> spatialHash, float cellSize) : this()
             {
-                uint hash = SpatialHashUseCase.Hash(transform.Position, cellSize);
-                spatialHash->Add(hash, entity);
+                _spatialHash = spatialHash.AsParallelWriter();
+                _cellSize = cellSize;
+            }
+
+            private void Execute(Entity entity, in LocalTransform transform)
+            {
+                uint hash = SpatialHashUseCase.Hash(transform.Position, _cellSize);
+                _spatialHash.Add(hash, entity);
             }
         }
     }

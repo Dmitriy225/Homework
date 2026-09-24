@@ -73,7 +73,6 @@ namespace SampleGame
                     || !_healthLookup.TryGetComponent(target, out var healthTarget)
                     || healthTarget.IsDead())
                 {
-                    Debug.Log("POINT_1");
                     continue;
                 }
 
@@ -82,7 +81,6 @@ namespace SampleGame
                     || health.IsDead()
                     || attackCooldown.ValueRO.IsPlaying())
                 {
-                    Debug.Log("POINT_2");
                     continue;
                 }
 
@@ -90,7 +88,6 @@ namespace SampleGame
                     || !_teamLookup.TryGetComponent(entity, out var team)
                     || targetTeam.Value == team.Value)
                 {
-                    Debug.Log("POINT_3");
                     continue;
                 }
 
@@ -99,14 +96,12 @@ namespace SampleGame
 
                 if (math.lengthsq(delta) > distance * distance)
                 {
-                    Debug.Log("POINT_4");
                     continue;
                 }
 
                 // Action
                 if (!_takeDamageRequestLookup.TryGetBuffer(target, out var requests))
                 {
-                    Debug.Log("POINT_5");
                     continue;
                 }
 

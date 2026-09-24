@@ -23,7 +23,7 @@ namespace SampleGame
 
         public static float GetPercent(in this Health health)
         {
-            return health.Current / health.Max;
+            return health.Current / (float)health.Max;
         }
     }
 }
