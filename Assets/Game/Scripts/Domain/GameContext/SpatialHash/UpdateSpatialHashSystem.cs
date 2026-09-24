@@ -29,7 +29,7 @@ namespace SampleGame
     //            .ScheduleParallel(state.Dependency);
     //    }
 
-    //    [WithPresent(typeof(Unit))]
+    //    [WithPresent(typeof(DamageableTag))]
     //    [BurstCompile]
     //    private partial struct UpdateJob : IJobEntity
     //    {
